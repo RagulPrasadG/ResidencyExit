@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230730ef73939f84fb561023f5670259, type: 3}
+  m_Name: GameDataSO
+  m_EditorClassIdentifier: 
+  playercarPrefab: {fileID: 3934730356750081031, guid: f71bc0618457ec34bb4c954c09e79794, type: 3}
+  aiCarPrefab:
+  - {fileID: 3620635434483762759, guid: f263b934b2225944f98bce06057ddff3, type: 3}
+  - {fileID: 4243506511433900472, guid: 809abc34e2648a9438aa282d171d9ad5, type: 3}
+  - {fileID: 230271633840830451, guid: 5ebc7e37dc582cd4b8a8c8fe79767c30, type: 3}
+  - {fileID: 6313901589631655216, guid: de9235e2c80c9f44abfd3b7ea1bfe8c9, type: 3}
+  obstaclePrefab:
+  - {fileID: 8171378548468014835, guid: 7527efd22c6c8304ba84e5373cf9a02b, type: 3}
+  - {fileID: 8176360517510450599, guid: 15646a94c5b1ba64785ab09762d61ab2, type: 3}
+  - {fileID: 5896201088587790071, guid: 7e404b9ceb99a6f4ba59529872ac4e01, type: 3}
+  - {fileID: 5512184407874347578, guid: 1a3933b6283a02d4094f8dc44bf73678, type: 3}
+  - {fileID: 8997810164649018479, guid: d2da32f2264a017468d14bb8e0813ed2, type: 3}
+  - {fileID: 2131756324075204425, guid: 28b4dfe4ff65a5b438abcfcc1c2a6d6f, type: 3}
+  currentLevel: 7
+  completedLevels: 11
+  coinAmount: 10
+  isLoaded: 1
+  tries: 0

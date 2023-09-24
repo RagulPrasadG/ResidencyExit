@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
+  m_Name: Aventador
+  m_EditorClassIdentifier: 
+  carData:
+    carSprite: {fileID: 21300000, guid: de1c71746dd627e4ead0cf71766ebc28, type: 3}
+    carPrefab: {fileID: 6218354028401533571, guid: ee7653dd844a0754ebee3d36fa9da8c5, type: 3}
+    amount: 200000
+    carStatus: 2
