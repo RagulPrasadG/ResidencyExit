@@ -147,7 +147,7 @@ public class AdManager : MonoBehaviour
             {
                 // TODO: Reward the user.
                 gameData.coinAmount += rewardAmount;
-                GameService.Instance.uIManager.SetCoinText();
+                GameService.Instance.mainMenuUIService.SetCoinText();
             });
         }
     }

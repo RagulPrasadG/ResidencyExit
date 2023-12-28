@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class UiManager : MonoBehaviour
+public class MainMenuUIService : MonoBehaviour
 {
     [SerializeField] Transform levelList;
     [Header("Panels")]
@@ -26,8 +26,6 @@ public class UiManager : MonoBehaviour
     [SerializeField] Button coinsCheatButton;
     [SerializeField] AudioSource audioSource;
     
-    private SaveManager saveManager;
-
     public float animationDuration  = 0.3f;
 
 
@@ -41,11 +39,6 @@ public class UiManager : MonoBehaviour
 #endif
         SetCoinText();
 
-    }
-
-    public void Init(SaveManager saveManager)
-    {
-        this.saveManager = saveManager;
     }
 
     public void OpenLevelList()

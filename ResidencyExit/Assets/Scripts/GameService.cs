@@ -13,8 +13,7 @@ public class GameService : Singleton<GameService>
     [SerializeField] AudioServiceScriptableObject soundServiceSO;
     public int collectedCoins;
 
-    public UiManager uIManager;
-    public SaveManager saveManager;
+    public MainMenuUIService mainMenuUIService;
 
     protected override void Awake()
     {
@@ -31,7 +30,6 @@ public class GameService : Singleton<GameService>
     public void Init()
     {
         Application.targetFrameRate = 60;
-        uIManager.Init(saveManager);
     }
 
     public void OnGoalReached()
