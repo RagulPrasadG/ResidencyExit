@@ -11,7 +11,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] TMP_Text buyText;
     [SerializeField] TMP_Text equipText;
     public Button button;
-    public CarDataSO carDataSO;
+    public CarDataSO carDataSO { get; set; }
    
    
     public void InitItem(CarDataSO carDataSO)
