@@ -14,6 +14,8 @@ public class VehicleView : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void SetController(VehicleController vehicleController) => this.vehicleController = vehicleController;
+
     private void OnTriggerEnter(Collider other)
     {
       

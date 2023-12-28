@@ -39,6 +39,7 @@ public class GameService : Singleton<GameService>
     {
         Application.targetFrameRate = 60;
         vehicleService = new VehicleService(gameDataSO,eventServiceSO,audioServiceSO);
+        SetEvents();
     }
 
     public void OnGoalReached()

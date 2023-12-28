@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,11 @@ public class VehicleService
         this.audioServiceSO = audioServiceSO;
     }
 
-    public void CreateVehicle(Vector3 position)
+    public void CreateVehicle(Vector3 position ,CinemachineVirtualCamera followCamera)
     {
         VehicleController vehicleController = new VehicleController(gameDataSO,eventServiceSO,audioServiceSO);
+        followCamera.Follow = vehicleController.vehicleView.transform;
+        followCamera.LookAt = vehicleController.vehicleView.transform;
         vehicleController.SetPosition(position);
     }
 }

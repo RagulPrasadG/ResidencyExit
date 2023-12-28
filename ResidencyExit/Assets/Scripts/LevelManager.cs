@@ -88,9 +88,7 @@ public class LevelManager : MonoBehaviour
                     Vector3 Position = GridManager.instance.GetCellCenter(GridManager.instance.GetCellPosition(i, j));
                     GridManager.instance.HorizontalIndex = i;
                     GridManager.instance.VerticalIndex = j;
-                    GameService.Instance.vehicleService.CreateVehicle(Position);
-                    followCamera.Follow = carInstance.transform;
-                    followCamera.LookAt = carInstance.transform;
+                    GameService.Instance.vehicleService.CreateVehicle(Position,followCamera);    
                 }
 
                 else if (levelDataSO.levelData[gameDataSO.currentLevel].worldgrid[i, j] == "g" || levelDataSO.levelData[gameDataSO.currentLevel].worldgrid[i, j] == "g\r")

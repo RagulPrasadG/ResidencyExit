@@ -7,6 +7,6 @@ public class EventServiceScriptableObject : ScriptableObject
 {
     public EventController OnCollectCoin = new EventController();
     public EventController OnReachGoal = new EventController();
-  
+    public EventController<VehicleMoveDirection> OnMoveVehicle = new EventController<VehicleMoveDirection>();
 
 }

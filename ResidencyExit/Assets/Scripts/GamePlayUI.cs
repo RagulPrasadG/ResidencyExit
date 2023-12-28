@@ -21,14 +21,28 @@ public class GamePlayUI : MonoBehaviour
     [SerializeField] TMPro.TMP_Text coinCountText;
     [SerializeField] TMPro.TMP_Text loseCoinCountText;
 
+    [Space(10)]
+    [Header("ScriptableObjects")]
     [SerializeField] GameDataSO gameDataSO;
     [SerializeField] LevelDataSO levelDataSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
+    [SerializeField] SaveServiceScriptableObject saveServiceSO;
+    [SerializeField] EventServiceScriptableObject eventServiceSO;
 
+    [Space(10)]
+    [Header("HUD Buttons")]
     [SerializeField] Button pauseButton;
     [SerializeField] Button gameWinPanelMenuButton;
     [SerializeField] Button gameWinPanelNextLevelButton;
-    [SerializeField] SaveServiceScriptableObject saveServiceSO;
+
+    [Space(10)]
+    [Header("Direction Buttons")]
+    [SerializeField] Button upButton;
+    [SerializeField] Button downButton;
+    [SerializeField] Button leftButton;
+    [SerializeField] Button rightButton;
+
+    [Space(10)]
     [SerializeField] AudioSource audioSource;
 
     public static GamePlayUI instance { get; private set; }
@@ -44,6 +58,7 @@ public class GamePlayUI : MonoBehaviour
             Destroy(this.gameObject);
 
         AdManager.instance.LoadInterstitialAd();
+        SetEvents();
     }
 
     public IEnumerator OnGameWin()
@@ -92,6 +107,14 @@ public class GamePlayUI : MonoBehaviour
         };
 
 
+    }
+
+    public void SetEvents()
+    {
+        upButton.onClick.AddListener(OnUpButtonClicked);
+        downButton.onClick.AddListener(OnDownButtonClicked);
+        leftButton.onClick.AddListener(OnLeftButtonClicked);
+        rightButton.onClick.AddListener(OnRightButtonClicked);
     }
 
     public IEnumerator OnGameLose()
@@ -195,6 +218,12 @@ public class GamePlayUI : MonoBehaviour
         Destroy(AdManager.instance.gameObject);
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void OnLeftButtonClicked() => eventServiceSO.OnMoveVehicle.RaiseEvent(VehicleMoveDirection.Left);
+    public void OnRightButtonClicked() => eventServiceSO.OnMoveVehicle.RaiseEvent(VehicleMoveDirection.Right);
+    public void OnUpButtonClicked() => eventServiceSO.OnMoveVehicle.RaiseEvent(VehicleMoveDirection.Up);
+    public void OnDownButtonClicked() => eventServiceSO.OnMoveVehicle.RaiseEvent(VehicleMoveDirection.Down);
+
 
     public void On2XWatchAdButtonClicked()
     {
