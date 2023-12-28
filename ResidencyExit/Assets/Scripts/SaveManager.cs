@@ -7,9 +7,7 @@ using UnityEngine.SceneManagement;
 public class SaveManager : MonoBehaviour
 {
     [SerializeField] GameDataSO gameData;
-    [SerializeField] List<CarDataSO> carDataSO;
-
-    public List<CarStatus> carStatusList = new List<CarStatus>();
+    private List<CarStatus> carStatusList = new List<CarStatus>();
 
     public void OnApplicationQuit()
     {
@@ -22,7 +20,7 @@ public class SaveManager : MonoBehaviour
          GetSavedData();
 
     }
-
+  
     public void SaveData()
     {          
         SaveCarStatus();
@@ -50,7 +48,7 @@ public class SaveManager : MonoBehaviour
         SaveContainer saveContainer = JsonUtility.FromJson<SaveContainer>(fileString);
         for (int i = 0; i < saveContainer.carstatusList.Count; i++)
         {
-            carDataSO[i].carData.carStatus = saveContainer.carstatusList[i];
+            gameData.carsData[i].carData.carStatus = saveContainer.carstatusList[i];
         }
         gameData.completedLevels = saveContainer.completedLevels;
         gameData.coinAmount = saveContainer.coinAmount;
@@ -60,9 +58,9 @@ public class SaveManager : MonoBehaviour
     public void SaveCarStatus()
     {
         carStatusList.Clear();
-        for(int i =0;i< carDataSO.Count;i++)
+        for(int i =0;i< gameData.carsData.Count;i++)
         {
-            carStatusList.Add(carDataSO[i].carData.carStatus);
+            carStatusList.Add(gameData.carsData[i].carData.carStatus);
         }
     }
 

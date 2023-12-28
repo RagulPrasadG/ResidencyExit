@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameService : Singleton<GameService>
 {
-    public List<CarDataSO> carData;
     [SerializeField] AudioSource audioSource;
     [SerializeField] GameDataSO gameData;
     [SerializeField] LevelDataSO levelDataSO;
