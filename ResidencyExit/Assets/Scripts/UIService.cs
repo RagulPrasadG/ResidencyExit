@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class UiManager : MonoBehaviour
+public class UIService : MonoBehaviour
 {
     [SerializeField] Transform levelList;
     [Header("Panels")]
@@ -19,10 +19,12 @@ public class UiManager : MonoBehaviour
     [SerializeField] TMPro.TMP_Text coinText;
     [SerializeField] GameDataSO gameDataSO;
     [SerializeField] Button coinsCheatButton;
-    [SerializeField] SaveManager saveManager;
+
     public float animationDuration  = 0.3f;
 
-    public static UiManager instance { get; private set; }
+    public static UIService instance { get; private set; }
+
+    private SaveManager saveService;
 
     private void Start()
     {
@@ -41,6 +43,11 @@ public class UiManager : MonoBehaviour
             instance = this;
         else
             Destroy(this.gameObject);
+    }
+
+    public void Init(SaveManager saveService)
+    {
+        this.saveService = saveService;
     }
 
     public void OpenLevelList()
@@ -124,7 +131,7 @@ public class UiManager : MonoBehaviour
     public void SetCoinText()
     {
         coinText.text = gameDataSO.coinAmount.ToString();
-        saveManager.SaveData();
+        saveService.SaveData();
     }
 
     public void TweenCoinVisual(int toValue)

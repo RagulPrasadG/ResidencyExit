@@ -76,10 +76,10 @@ public class GamePlayUI : MonoBehaviour
         animationSequence.Play();
         animationSequence.onComplete += () =>
         {
-            if (GameManager.instance.collectedCoins == 0) return;
+            if (GameService.instance.collectedCoins == 0) return;
 
             AudioManager.instance.PlaySoundLoop(1,1.4f);
-            var tween = DOTween.To(() => tweenWinCoinAmount, TweenWinCoinAmount, GameManager.instance.collectedCoins, 4f);
+            var tween = DOTween.To(() => tweenWinCoinAmount, TweenWinCoinAmount, GameService.instance.collectedCoins, 4f);
             tween.onComplete += () =>
             {
                 AudioManager.instance.ResetAudioSource();
@@ -104,10 +104,10 @@ public class GamePlayUI : MonoBehaviour
         animationSequence.Play();
         animationSequence.onComplete += () =>
         {
-            if (GameManager.instance.collectedCoins == 0) return;
+            if (GameService.instance.collectedCoins == 0) return;
 
             AudioManager.instance.PlaySoundLoop(1, 1.4f);
-            var tween = DOTween.To(() => tweenLoseCoinAmount, TweenLoseCoinAmount, GameManager.instance.collectedCoins, 4f);
+            var tween = DOTween.To(() => tweenLoseCoinAmount, TweenLoseCoinAmount, GameService.instance.collectedCoins, 4f);
             tween.onComplete += () =>
             {
                 AudioManager.instance.ResetAudioSource();
@@ -134,7 +134,7 @@ public class GamePlayUI : MonoBehaviour
     {
         AudioManager.instance.ResetAudioSource();
         AudioManager.instance.PlayClick();
-        GameManager.instance.IncrementLevel();
+        GameService.instance.IncrementLevel();
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -142,7 +142,7 @@ public class GamePlayUI : MonoBehaviour
     {
         AudioManager.instance.ResetAudioSource();
         AudioManager.instance.PlayClick();
-        GameManager.instance.collectedCoins = 0;
+        GameService.instance.collectedCoins = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -177,7 +177,7 @@ public class GamePlayUI : MonoBehaviour
     {
         AudioManager.instance.PlayClick();
         Time.timeScale = 1;
-        GameManager.instance.collectedCoins = 0;
+        GameService.instance.collectedCoins = 0;
         DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -187,7 +187,7 @@ public class GamePlayUI : MonoBehaviour
         AudioManager.instance.PlayClick();
         Time.timeScale = 1;
         DOTween.KillAll();
-        Destroy(GameManager.instance.gameObject);
+        Destroy(GameService.instance.gameObject);
         Destroy(AudioManager.instance.gameObject);
         Destroy(AdManager.instance.gameObject);
         SceneManager.LoadScene("MainMenu");
@@ -195,9 +195,9 @@ public class GamePlayUI : MonoBehaviour
 
     public void On2XWatchAdButtonClicked()
     {
-        if (GameManager.instance.collectedCoins == 0) return;
+        if (GameService.instance.collectedCoins == 0) return;
 
-        AdManager.instance.ShowRewardedAd(GameManager.instance.collectedCoins * 2);
+        AdManager.instance.ShowRewardedAd(GameService.instance.collectedCoins * 2);
     }
 
 }

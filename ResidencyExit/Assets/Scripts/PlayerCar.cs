@@ -16,14 +16,14 @@ public class PlayerCar : MonoBehaviour
         if(other.gameObject.CompareTag("Coin"))
         {
             AudioManager.instance.PlaySoundAt(source, 1);
-            GameManager.instance.OnCoinCollect();
+            GameService.instance.OnCoinCollect();
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("GoalRing"))
         {
 
-            GameManager.instance.OnGoalReached();
+            GameService.instance.OnGoalReached();
             Destroy(other.gameObject, 1f);
         }
 
@@ -34,7 +34,7 @@ public class PlayerCar : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AICar"))
         {
-            GameManager.instance.OnCarCrash();
+            GameService.instance.OnCarCrash();
         }
     }
 

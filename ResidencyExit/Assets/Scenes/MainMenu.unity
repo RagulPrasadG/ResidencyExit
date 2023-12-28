@@ -1507,7 +1507,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232941609
 GameObject:
@@ -1654,7 +1654,7 @@ GameObject:
   - component: {fileID: 289869600}
   - component: {fileID: 289869599}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1672,25 +1672,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fbe2807a4918e45b5c86e8a33be828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carData:
-  - {fileID: 11400000, guid: cef0670d3c3359d43aa085a599259b6f, type: 2}
-  - {fileID: 11400000, guid: 7b8fefe75e0148d48a2f33c9386723d4, type: 2}
-  - {fileID: 11400000, guid: 3278e33f42804494e9b7c95646dde981, type: 2}
-  - {fileID: 11400000, guid: b8b07035c1ab31d4ea93c741c4557866, type: 2}
-  - {fileID: 11400000, guid: 7f96a42ed9130c34abbe229bd8059dc0, type: 2}
-  - {fileID: 11400000, guid: d26955436d292a449af720c84a7704f8, type: 2}
-  - {fileID: 11400000, guid: 4078c75c737093b4e81b4e186ad28c4c, type: 2}
-  - {fileID: 11400000, guid: abdd161d675da754c83d0e5a87aadada, type: 2}
-  - {fileID: 11400000, guid: 0c6a6bf593f63784c99b9ed87e999d78, type: 2}
-  - {fileID: 11400000, guid: e4b9047b6cd9f97419a330195cf8db49, type: 2}
-  - {fileID: 11400000, guid: 0177986d030e853418b6a562f0bb9ce3, type: 2}
-  - {fileID: 11400000, guid: e7c5f913ef9c2a54b91cd2593f3039b7, type: 2}
-  - {fileID: 11400000, guid: b37bcde8f87be1b4b84c02ecd0f4e28d, type: 2}
-  - {fileID: 11400000, guid: a49da484cf2fec5479438b24af763bac, type: 2}
-  - {fileID: 11400000, guid: ae55f36dd033a4b4fb2e7fd78152885f, type: 2}
   gameData: {fileID: 11400000, guid: a1349e942b32dd047b131d203cc5c11b, type: 2}
   levelDataSO: {fileID: 11400000, guid: 5f290540f623fad41a37dd582c55b560, type: 2}
   collectedCoins: 0
+  uImanager: {fileID: 1070061464}
 --- !u!4 &289869600
 Transform:
   m_ObjectHideFlags: 0
@@ -3582,7 +3567,6 @@ MonoBehaviour:
   shopItemPrefab: {fileID: 8648594747331845729, guid: 7e84f12994d90f74987d6b943745fbcb, type: 3}
   gameDataSO: {fileID: 11400000, guid: a1349e942b32dd047b131d203cc5c11b, type: 2}
   uiManager: {fileID: 1070061464}
-  saveManager: {fileID: 1496158704}
   shopItems: []
 --- !u!1001 &612187777
 PrefabInstance:
@@ -5821,7 +5805,6 @@ MonoBehaviour:
   coinText: {fileID: 1097682871}
   gameDataSO: {fileID: 11400000, guid: a1349e942b32dd047b131d203cc5c11b, type: 2}
   coinsCheatButton: {fileID: 232941611}
-  saveManager: {fileID: 1496158704}
   animationDuration: 0.3
 --- !u!1001 &1078942609
 PrefabInstance:
@@ -8689,68 +8672,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489418149}
   m_CullTransparentMesh: 1
---- !u!1 &1496158702
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1496158703}
-  - component: {fileID: 1496158704}
-  m_Layer: 0
-  m_Name: SaveManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1496158703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496158702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.951515, y: 425.21265, z: 3.14418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1496158704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496158702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 357d55b3148f8d54b95f3bdca6f0f3f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: a1349e942b32dd047b131d203cc5c11b, type: 2}
-  carDataSO:
-  - {fileID: 11400000, guid: cef0670d3c3359d43aa085a599259b6f, type: 2}
-  - {fileID: 11400000, guid: 7b8fefe75e0148d48a2f33c9386723d4, type: 2}
-  - {fileID: 11400000, guid: 3278e33f42804494e9b7c95646dde981, type: 2}
-  - {fileID: 11400000, guid: b8b07035c1ab31d4ea93c741c4557866, type: 2}
-  - {fileID: 11400000, guid: 7f96a42ed9130c34abbe229bd8059dc0, type: 2}
-  - {fileID: 11400000, guid: d26955436d292a449af720c84a7704f8, type: 2}
-  - {fileID: 11400000, guid: 4078c75c737093b4e81b4e186ad28c4c, type: 2}
-  - {fileID: 11400000, guid: abdd161d675da754c83d0e5a87aadada, type: 2}
-  - {fileID: 11400000, guid: 0c6a6bf593f63784c99b9ed87e999d78, type: 2}
-  - {fileID: 11400000, guid: e4b9047b6cd9f97419a330195cf8db49, type: 2}
-  - {fileID: 11400000, guid: 0177986d030e853418b6a562f0bb9ce3, type: 2}
-  - {fileID: 11400000, guid: e7c5f913ef9c2a54b91cd2593f3039b7, type: 2}
-  - {fileID: 11400000, guid: b37bcde8f87be1b4b84c02ecd0f4e28d, type: 2}
-  - {fileID: 11400000, guid: a49da484cf2fec5479438b24af763bac, type: 2}
-  - {fileID: 11400000, guid: ae55f36dd033a4b4fb2e7fd78152885f, type: 2}
-  carStatusList: 
 --- !u!1 &1504855689
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,14 +4,19 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameService : MonoBehaviour
 {
-    public List<CarDataSO> carData;
     [SerializeField] GameDataSO gameData;
     [SerializeField] LevelDataSO levelDataSO;
     public int collectedCoins;
 
-    public static GameManager instance { get; private set; }
+    #region Services
+    public EventService eventService;
+    public SaveManager saveService;
+    public UIService uImanager;
+    #endregion
+
+    public static GameService instance { get; private set; }
     private void Awake()
     {
         if (instance == null)
@@ -20,10 +25,17 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
 
         DontDestroyOnLoad(this);
-
-        Application.targetFrameRate = 60;
+        Init();
+        
     }
    
+    public void Init()
+    {
+        Application.targetFrameRate = 60;
+        this.eventService = new EventService();
+        this.saveService = new SaveManager(gameData);
+        this.uImanager.Init(saveService);
+    }
 
     public void OnGoalReached()
     {

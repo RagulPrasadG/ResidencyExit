@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+public class ShopService : MonoBehaviour
 {
     
     [SerializeField]RectTransform shopContentParent;
     [SerializeField] GameObject shopItemPrefab;
     [SerializeField] GameDataSO gameDataSO;
-    [SerializeField] UiManager uiManager;
+    [SerializeField] UIService uiManager;
     [SerializeField] SaveManager saveManager;
     public List<ShopItem> shopItems = new List<ShopItem>();
 
@@ -19,7 +19,7 @@ public class Shop : MonoBehaviour
 
     private void InitShop()
     {
-        foreach(CarDataSO car in GameManager.instance.carData)
+        foreach(CarDataSO car in gameDataSO.carsData)
         {
             var temp = Instantiate(shopItemPrefab);
             temp.transform.SetParent(shopContentParent.transform, false);
