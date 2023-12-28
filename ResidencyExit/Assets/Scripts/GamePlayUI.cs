@@ -64,7 +64,6 @@ public class GamePlayUI : MonoBehaviour
     public IEnumerator OnGameWin()
     {
         audioServiceSO.PlaySFX(audioSource,AudioType.LevelUp);
-      
         if (gameDataSO.completedLevels < levelDataSO.levelDataCSV.Length - 1)
         {
             gameDataSO.completedLevels++;
@@ -100,7 +99,7 @@ public class GamePlayUI : MonoBehaviour
             var tween = DOTween.To(() => tweenWinCoinAmount, TweenWinCoinAmount, GameService.Instance.collectedCoins, 4f);
             tween.onComplete += () =>
             {
-                audioServiceSO.ResetAudioSource();
+                audioServiceSO.ResetAudioSource(audioSource);
                 
             };
 
@@ -136,7 +135,7 @@ public class GamePlayUI : MonoBehaviour
             var tween = DOTween.To(() => tweenLoseCoinAmount, TweenLoseCoinAmount, GameService.Instance.collectedCoins, 4f);
             tween.onComplete += () =>
             {
-                audioServiceSO.ResetAudioSource();
+                audioServiceSO.ResetAudioSource(audioSource);
 
             };
 
@@ -158,15 +157,14 @@ public class GamePlayUI : MonoBehaviour
 
     public void OnNextLevelButtonClicked()
     {
-        audioServiceSO.ResetAudioSource();
+        audioServiceSO.ResetAudioSource(audioSource);
         audioServiceSO.PlaySFX(audioSource,AudioType.ButtonClick);
         GameService.Instance.IncrementLevel();
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void OnRetryButtonClicked()
     {
-        audioServiceSO.ResetAudioSource();
+        audioServiceSO.ResetAudioSource(audioSource);
         audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         GameService.Instance.collectedCoins = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -214,7 +212,6 @@ public class GamePlayUI : MonoBehaviour
         Time.timeScale = 1;
         DOTween.KillAll();
         Destroy(GameService.Instance.gameObject);
-        //Destroy(audioServiceSO.gameObject);
         Destroy(AdManager.instance.gameObject);
         SceneManager.LoadScene("MainMenu");
     }

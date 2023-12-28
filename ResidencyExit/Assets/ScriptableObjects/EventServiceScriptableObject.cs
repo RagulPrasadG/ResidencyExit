@@ -9,4 +9,5 @@ public class EventServiceScriptableObject : ScriptableObject
     public EventController OnReachGoal = new EventController();
     public EventController<VehicleMoveDirection> OnMoveVehicle = new EventController<VehicleMoveDirection>();
 
+   
 }

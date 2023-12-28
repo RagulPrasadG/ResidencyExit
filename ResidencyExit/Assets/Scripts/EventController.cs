@@ -16,6 +16,11 @@ public class EventController<T>
         baseEvent -= listener;
     }
 
+    public void RemoveAllListeners()
+    {
+        baseEvent = null;
+    }
+
     public void RaiseEvent(T param)
     {
         baseEvent?.Invoke(param);
@@ -34,6 +39,11 @@ public class EventController
     public void RemoveListener(Action listener)
     {
         baseEvent -= listener;
+    }
+
+    public void RemoveAllListeners()
+    {
+        baseEvent = null;
     }
 
     public void RaiseEvent()

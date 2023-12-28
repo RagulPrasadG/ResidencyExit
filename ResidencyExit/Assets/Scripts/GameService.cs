@@ -31,6 +31,8 @@ public class GameService : Singleton<GameService>
 
     public void SetEvents()
     {
+        eventServiceSO.OnCollectCoin.RemoveAllListeners();
+        eventServiceSO.OnReachGoal.RemoveAllListeners();
         eventServiceSO.OnCollectCoin.AddListener(OnCoinCollect);
         eventServiceSO.OnReachGoal.AddListener(OnGoalReached);
     }

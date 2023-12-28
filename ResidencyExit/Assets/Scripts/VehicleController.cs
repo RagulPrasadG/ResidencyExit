@@ -22,12 +22,13 @@ public class VehicleController
         this.gameDataSO = gameDataSO;
         this.vehicleView = Object.Instantiate(gameDataSO.playerVehiclePrefab);
         this.vehicleView.SetController(this);
-        this.audioServiceSO.PlaySFX(vehicleView.source, AudioType.CarIgnition);
+        this.audioServiceSO.PlaySFX(vehicleView.audioSource, AudioType.CarIgnition);
         SetEvents();
     }
 
     public void SetEvents()
     {
+        eventServiceSO.OnMoveVehicle.RemoveAllListeners();
         eventServiceSO.OnMoveVehicle.AddListener(MoveVehicle);
     }
 
@@ -43,7 +44,7 @@ public class VehicleController
     {
         if (!canMove) return;
 
-        audioServiceSO.PlaySFX(vehicleView.source, AudioType.ButtonClick);
+        audioServiceSO.PlaySFX(vehicleView.audioSource, AudioType.ButtonClick);
         vehicleView.animator.SetBool("isMoving", true);
 
         Vector3 destination = Vector3.zero;
@@ -68,7 +69,7 @@ public class VehicleController
             vehicleView.animator.SetBool("isMoving", false);
             return;        //if the endposition is the same as car position dont move
         }
-        vehicleView.source.DOPitch(1.1f, 0.2f);
+        vehicleView.audioSource.DOPitch(1.1f, 0.2f);
         Vector3 direction = (destination - vehicleView.transform.position).normalized;
         Quaternion rotation = Quaternion.LookRotation(direction);
         Sequence sequence = DOTween.Sequence();
@@ -79,7 +80,7 @@ public class VehicleController
         sequence.onComplete += () =>
         {
             canMove = true;
-            vehicleView.source.DOPitch(1.0f, 0.2f);
+            vehicleView.audioSource.DOPitch(1.0f, 0.2f);
             vehicleView.animator.SetBool("isMoving", false);
 
         };

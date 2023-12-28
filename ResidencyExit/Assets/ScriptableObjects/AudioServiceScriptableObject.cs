@@ -8,11 +8,8 @@ public class AudioServiceScriptableObject : ScriptableObject
     [SerializeField] SoundDataSO soundData;
     private WaitForSeconds waitTime;
 
-    private AudioSource audioSource;
-
     public void PlaySFX(AudioSource audioSource,AudioType audioType)
     {
-        this.audioSource = audioSource;
         audioSource.loop = false;
         audioSource.clip = soundData.GetClip(audioType);
         audioSource.PlayOneShot(audioSource.clip);
@@ -20,7 +17,6 @@ public class AudioServiceScriptableObject : ScriptableObject
 
     public void PlaySoundLoop(AudioSource audioSource,AudioType audioType, float pitch = 1)
     {
-        this.audioSource = audioSource;
         audioSource.pitch = pitch;
         audioSource.loop = true;
         audioSource.clip = soundData.GetClip(audioType);
@@ -28,11 +24,11 @@ public class AudioServiceScriptableObject : ScriptableObject
 
     }
 
-    public void ResetAudioSource()
+    public void ResetAudioSource(AudioSource audioSource)
     {
-        this.audioSource.clip = null;
-        this.audioSource.pitch = 1;
-        this.audioSource.loop = false;
+        audioSource.clip = null;
+        audioSource.pitch = 1;
+        audioSource.loop = false;
     }
 
     //public void PlaySoundAt(AudioSource source, AudioType audioType)

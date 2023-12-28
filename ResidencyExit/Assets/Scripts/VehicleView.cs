@@ -5,12 +5,12 @@ using UnityEngine;
 public class VehicleView : MonoBehaviour
 {
     public VehicleController vehicleController;
-    public Animator animator { get; set; }
-    public AudioSource source { get; set; }
+    public Animator animator;
+    public AudioSource audioSource;
 
     private void Awake()
     {
-        source = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -21,7 +21,7 @@ public class VehicleView : MonoBehaviour
       
         if(other.gameObject.CompareTag("Coin"))
         {
-            vehicleController.audioServiceSO.PlaySFX(source, AudioType.CoinCollect);
+            vehicleController.audioServiceSO.PlaySFX(audioSource, AudioType.CoinCollect);
             vehicleController.eventServiceSO.OnCollectCoin.RaiseEvent();
             Destroy(other.gameObject);
         }
