@@ -4,15 +4,12 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaveManager
+public class SaveManager : MonoBehaviour
 {
-    private GameDataSO gameDataSO;
-    private List<CarStatus> carStatusList = new List<CarStatus>();
+    [SerializeField] GameDataSO gameData;
+    [SerializeField] List<CarDataSO> carDataSO;
 
-    public SaveManager(GameDataSO gameDataSO)
-    {
-        this.gameDataSO = gameDataSO;
-    }
+    public List<CarStatus> carStatusList = new List<CarStatus>();
 
     public void OnApplicationQuit()
     {
@@ -31,8 +28,8 @@ public class SaveManager
         SaveCarStatus();
         SaveContainer saveContainer = new SaveContainer
         {
-            coinAmount = gameDataSO.coinAmount,
-            completedLevels = gameDataSO.completedLevels,
+            coinAmount = gameData.coinAmount,
+            completedLevels = gameData.completedLevels,
             carstatusList = this.carStatusList 
         };
 
@@ -44,7 +41,7 @@ public class SaveManager
 
     public void GetSavedData()
     {
-        if (gameDataSO.isLoaded) return; //check to avoid loading previously saved data again when returning to mainmenu from gameplay
+        if (gameData.isLoaded) return; //check to avoid loading previously saved data again when returning to mainmenu from gameplay
 
         if (!File.Exists(Application.persistentDataPath + "/saveFile.json")) return;
 
@@ -53,19 +50,19 @@ public class SaveManager
         SaveContainer saveContainer = JsonUtility.FromJson<SaveContainer>(fileString);
         for (int i = 0; i < saveContainer.carstatusList.Count; i++)
         {
-            gameDataSO.carsData[i].carData.carStatus = saveContainer.carstatusList[i];
+            carDataSO[i].carData.carStatus = saveContainer.carstatusList[i];
         }
-        gameDataSO.completedLevels = saveContainer.completedLevels;
-        gameDataSO.coinAmount = saveContainer.coinAmount;
-        gameDataSO.isLoaded = true;
+        gameData.completedLevels = saveContainer.completedLevels;
+        gameData.coinAmount = saveContainer.coinAmount;
+        gameData.isLoaded = true;
     }
 
     public void SaveCarStatus()
     {
         carStatusList.Clear();
-        for(int i =0;i< gameDataSO.carsData.Count;i++)
+        for(int i =0;i< carDataSO.Count;i++)
         {
-            carStatusList.Add(gameDataSO.carsData[i].carData.carStatus);
+            carStatusList.Add(carDataSO[i].carData.carStatus);
         }
     }
 
