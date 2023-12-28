@@ -27,5 +27,6 @@ public enum AudioType
     CoinCollect,
     LevelUp,
     BuySuccess,
-    CarCrash
+    CarCrash,
+    CarIgnition
 }

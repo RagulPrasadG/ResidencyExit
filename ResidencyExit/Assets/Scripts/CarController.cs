@@ -5,17 +5,11 @@ using DG.Tweening;
 public class CarController : MonoBehaviour
 {
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] float carMoveSpeed;
 
-
-    private bool canMove = true;
-    private Animator animator;
-    public LevelDataSO levelDataSO;
     private GameObject carClone;
-
-    public AudioClip[] audioclips;
+    private Animator animator;
     private AudioSource source;
+    private bool canMove = true;
 
     private void Start()
     {
@@ -23,17 +17,14 @@ public class CarController : MonoBehaviour
         source = carClone.GetComponent<AudioSource>();
         animator = carClone.GetComponent<Animator>();
 
-        source.PlayOneShot(audioclips[0]);
-        source.clip = audioclips[1];
-        source.loop = true;
-        source.PlayDelayed(1f);
+        audioServiceSO.PlaySFX(source, AudioType.CarIgnition);
     }
 
     public void MoveLeft()
     {
         if (!canMove) return;
 
-        audioServiceSO.PlaySFX(audioSource,AudioType.ButtonClick);
+        audioServiceSO.PlaySFX(source, AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         Vector3 endPosition = GridManager.instance.GetLeftEndPosition();
         if (endPosition == Vector3.zero)
@@ -61,7 +52,7 @@ public class CarController : MonoBehaviour
     {
         if (!canMove) return;
 
-        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
+        audioServiceSO.PlaySFX(source, AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         
         Vector3 endPosition = GridManager.instance.GetRightEndPosition();
@@ -91,7 +82,7 @@ public class CarController : MonoBehaviour
     {
         if (!canMove) return;
 
-        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
+        audioServiceSO.PlaySFX(source, AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         Vector3 endPosition = GridManager.instance.GetUpEndPosition();
         if (endPosition == Vector3.zero)
@@ -118,7 +109,7 @@ public class CarController : MonoBehaviour
     {
         if (!canMove) return;
 
-        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
+        audioServiceSO.PlaySFX(source, AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         Vector3 endPosition = GridManager.instance.GetDownEndPosition();
         if (endPosition == Vector3.zero)

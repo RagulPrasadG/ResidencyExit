@@ -28,7 +28,6 @@ public class SaveServiceScriptableObject : ScriptableObject
 
         string dataString = JsonUtility.ToJson(saveContainer, true);
         string savePath = Application.persistentDataPath + "/saveFile.json";
-        Debug.Log(dataString);
         File.WriteAllText(savePath, dataString);
     }
 
