@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
   m_Name: SUVLuxury
   m_EditorClassIdentifier: 
-  carData:
-    carSprite: {fileID: 21300000, guid: 6f071b513fbf2464193d1a3029576a46, type: 3}
-    carPrefab: {fileID: 2463461762017395640, guid: 3c6bd8d44e8df584eb6d2776c8db530b, type: 3}
-    amount: 18000
-    carStatus: 2
+  vehicleData:
+    vehicleSprite: {fileID: 21300000, guid: 6f071b513fbf2464193d1a3029576a46, type: 3}
+    vehiclePrefab: {fileID: -762118719630320422, guid: 3c6bd8d44e8df584eb6d2776c8db530b, type: 3}
+    amount: 7500
+    vehicleStatus: 2

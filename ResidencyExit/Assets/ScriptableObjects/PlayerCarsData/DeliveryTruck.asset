@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
   m_Name: DeliveryTruck
   m_EditorClassIdentifier: 
-  carData:
-    carSprite: {fileID: 21300000, guid: b95089d541f1b784ca41c1e84a2e5de6, type: 3}
-    carPrefab: {fileID: 4243506511433900472, guid: fc0736a6dbe7a65478a22d16660669f3, type: 3}
-    amount: 2000
-    carStatus: 2
+  vehicleData:
+    vehicleSprite: {fileID: 21300000, guid: b95089d541f1b784ca41c1e84a2e5de6, type: 3}
+    vehiclePrefab: {fileID: -1851284988722221306, guid: fc0736a6dbe7a65478a22d16660669f3, type: 3}
+    amount: 3000
+    vehicleStatus: 2

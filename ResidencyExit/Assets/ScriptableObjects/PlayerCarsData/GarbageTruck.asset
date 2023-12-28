@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
   m_Name: GarbageTruck
   m_EditorClassIdentifier: 
-  carData:
-    carSprite: {fileID: 21300000, guid: 98a2aebd4bc4b03488a401b77bf0010d, type: 3}
-    carPrefab: {fileID: 1152389718486160260, guid: c1e4d4b8a030eba48b1d1b58f49d6bc1, type: 3}
-    amount: 4000
-    carStatus: 2
+  vehicleData:
+    vehicleSprite: {fileID: 21300000, guid: 98a2aebd4bc4b03488a401b77bf0010d, type: 3}
+    vehiclePrefab: {fileID: -4837407008673864240, guid: c1e4d4b8a030eba48b1d1b58f49d6bc1, type: 3}
+    amount: 2500
+    vehicleStatus: 2

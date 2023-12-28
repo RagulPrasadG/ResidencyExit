@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
   m_Name: Aventador
   m_EditorClassIdentifier: 
-  carData:
-    carSprite: {fileID: 21300000, guid: de1c71746dd627e4ead0cf71766ebc28, type: 3}
-    carPrefab: {fileID: 6218354028401533571, guid: ee7653dd844a0754ebee3d36fa9da8c5, type: 3}
-    amount: 200000
-    carStatus: 2
+  vehicleData:
+    vehicleSprite: {fileID: 21300000, guid: de1c71746dd627e4ead0cf71766ebc28, type: 3}
+    vehiclePrefab: {fileID: 7888170792286892300, guid: ee7653dd844a0754ebee3d36fa9da8c5, type: 3}
+    amount: 25000
+    vehicleStatus: 2

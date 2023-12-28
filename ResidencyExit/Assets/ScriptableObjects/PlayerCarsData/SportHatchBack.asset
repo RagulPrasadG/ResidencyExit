@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
   m_Name: SportHatchBack
   m_EditorClassIdentifier: 
-  carData:
-    carSprite: {fileID: 21300000, guid: 2bde0d1c69eae6e4c9e276e3d2c84b18, type: 3}
-    carPrefab: {fileID: 3311654821915271914, guid: eaaecef41a6c99a4bab4a35eb0380b2a, type: 3}
-    amount: 1000
-    carStatus: 2
+  vehicleData:
+    vehicleSprite: {fileID: 21300000, guid: 2bde0d1c69eae6e4c9e276e3d2c84b18, type: 3}
+    vehiclePrefab: {fileID: 2468646835375172848, guid: eaaecef41a6c99a4bab4a35eb0380b2a, type: 3}
+    amount: 2200
+    vehicleStatus: 2

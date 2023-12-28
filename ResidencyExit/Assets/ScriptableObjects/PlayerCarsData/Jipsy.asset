@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
   m_Name: Jipsy
   m_EditorClassIdentifier: 
-  carData:
-    carSprite: {fileID: 21300000, guid: c5c8c9623ad77ea408fcca7ef21d3253, type: 3}
-    carPrefab: {fileID: 7380703248295244125, guid: c608481d65887114e95d838271605d95, type: 3}
-    amount: 80000
-    carStatus: 2
+  vehicleData:
+    vehicleSprite: {fileID: 21300000, guid: c5c8c9623ad77ea408fcca7ef21d3253, type: 3}
+    vehiclePrefab: {fileID: -1924786549601555601, guid: c608481d65887114e95d838271605d95, type: 3}
+    amount: 4000
+    vehicleStatus: 2

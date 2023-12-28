@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125657eee97da34ea63afb9cc016809, type: 3}
   m_Name: Taxi
   m_EditorClassIdentifier: 
-  carData:
-    carSprite: {fileID: 21300000, guid: 34d3f0f422e92084ea1df50ee723bc1a, type: 3}
-    carPrefab: {fileID: 230271633840830451, guid: 6605e5c0a4340a442871db8edd3adbb4, type: 3}
-    amount: 10000
-    carStatus: 2
+  vehicleData:
+    vehicleSprite: {fileID: 21300000, guid: 34d3f0f422e92084ea1df50ee723bc1a, type: 3}
+    vehiclePrefab: {fileID: 1639568979138062615, guid: 6605e5c0a4340a442871db8edd3adbb4, type: 3}
+    amount: 1800
+    vehicleStatus: 2
