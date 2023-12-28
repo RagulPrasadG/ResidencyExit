@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameService : Singleton<GameService>
 {
     public List<CarDataSO> carData;
+    [SerializeField] AudioSource audioSource;
     [SerializeField] GameDataSO gameData;
     [SerializeField] LevelDataSO levelDataSO;
+    [SerializeField] AudioServiceScriptableObject soundServiceSO;
     public int collectedCoins;
 
     protected override void Awake()
@@ -47,7 +49,7 @@ public class GameService : Singleton<GameService>
         {
             AdManager.instance.ShowInterstitialAd();
         }
-        AudioManager.instance.PlaySound(4);  //play lose sound here
+        soundServiceSO.PlaySFX(audioSource,AudioType.CarCrash);  //play lose sound here
         StartCoroutine(GamePlayUI.instance.OnGameLose());
     }
 

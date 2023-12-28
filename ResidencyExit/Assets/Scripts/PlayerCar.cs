@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCar : MonoBehaviour
 {
+    [SerializeField] AudioServiceScriptableObject audioServiceSO;
     private AudioSource source;
     private void Awake()
     {
@@ -15,7 +16,7 @@ public class PlayerCar : MonoBehaviour
       
         if(other.gameObject.CompareTag("Coin"))
         {
-            AudioManager.instance.PlaySoundAt(source, 1);
+            audioServiceSO.PlaySFX(source, AudioType.CoinCollect);
             GameService.Instance.OnCoinCollect();
             Destroy(other.gameObject);
         }

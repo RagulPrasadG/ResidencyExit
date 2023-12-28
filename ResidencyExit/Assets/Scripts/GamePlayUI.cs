@@ -23,11 +23,14 @@ public class GamePlayUI : MonoBehaviour
 
     [SerializeField] GameDataSO gameDataSO;
     [SerializeField] LevelDataSO levelDataSO;
+    [SerializeField] AudioServiceScriptableObject audioServiceSO;
 
     [SerializeField] Button pauseButton;
     [SerializeField] Button gameWinPanelMenuButton;
     [SerializeField] Button gameWinPanelNextLevelButton;
     [SerializeField] SaveManager saveManager;
+    [SerializeField] AudioSource audioSource;
+
     public static GamePlayUI instance { get; private set; }
 
     private int tweenWinCoinAmount = 0;
@@ -45,8 +48,8 @@ public class GamePlayUI : MonoBehaviour
 
     public IEnumerator OnGameWin()
     {
-        AudioManager.instance.PlaySound(2);
-
+        audioServiceSO.PlaySFX(audioSource,AudioType.LevelUp);
+      
         if (gameDataSO.completedLevels < levelDataSO.levelDataCSV.Length - 1)
         {
             gameDataSO.completedLevels++;
@@ -78,11 +81,11 @@ public class GamePlayUI : MonoBehaviour
         {
             if (GameService.Instance.collectedCoins == 0) return;
 
-            AudioManager.instance.PlaySoundLoop(1,1.4f);
+            audioServiceSO.PlaySoundLoop(audioSource,AudioType.CoinCollect, 1.4f);
             var tween = DOTween.To(() => tweenWinCoinAmount, TweenWinCoinAmount, GameService.Instance.collectedCoins, 4f);
             tween.onComplete += () =>
             {
-                AudioManager.instance.ResetAudioSource();
+                audioServiceSO.ResetAudioSource();
                 
             };
 
@@ -106,11 +109,11 @@ public class GamePlayUI : MonoBehaviour
         {
             if (GameService.Instance.collectedCoins == 0) return;
 
-            AudioManager.instance.PlaySoundLoop(1, 1.4f);
+            audioServiceSO.PlaySoundLoop(audioSource,AudioType.CoinCollect, 1.4f);
             var tween = DOTween.To(() => tweenLoseCoinAmount, TweenLoseCoinAmount, GameService.Instance.collectedCoins, 4f);
             tween.onComplete += () =>
             {
-                AudioManager.instance.ResetAudioSource();
+                audioServiceSO.ResetAudioSource();
 
             };
 
@@ -132,23 +135,23 @@ public class GamePlayUI : MonoBehaviour
 
     public void OnNextLevelButtonClicked()
     {
-        AudioManager.instance.ResetAudioSource();
-        AudioManager.instance.PlayClick();
+        audioServiceSO.ResetAudioSource();
+        audioServiceSO.PlaySFX(audioSource,AudioType.ButtonClick);
         GameService.Instance.IncrementLevel();
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void OnRetryButtonClicked()
     {
-        AudioManager.instance.ResetAudioSource();
-        AudioManager.instance.PlayClick();
+        audioServiceSO.ResetAudioSource();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         GameService.Instance.collectedCoins = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnResumeButtonClicked()
     {
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         Time.timeScale = 1;
         Sequence animationSequence = DOTween.Sequence();
         animationSequence.Append(pauseGamePanel.transform.DOMove(bottomPoint.position, animationDuration));
@@ -163,7 +166,7 @@ public class GamePlayUI : MonoBehaviour
 
     public void OnPauseButtonClicked()
     {
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         pauseButton.gameObject.SetActive(false);
         pauseGamePanel.gameObject.SetActive(true);    
         var tween = pauseGamePanel.transform.DOMove(centerPoint.position, animationDuration);
@@ -175,7 +178,7 @@ public class GamePlayUI : MonoBehaviour
     }
     public void OnRestartButtonClicked()
     {
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         Time.timeScale = 1;
         GameService.Instance.collectedCoins = 0;
         DOTween.KillAll();
@@ -184,11 +187,11 @@ public class GamePlayUI : MonoBehaviour
 
     public void OnMainMenuButtonClicked()
     {
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         Time.timeScale = 1;
         DOTween.KillAll();
         Destroy(GameService.Instance.gameObject);
-        Destroy(AudioManager.instance.gameObject);
+        //Destroy(audioServiceSO.gameObject);
         Destroy(AdManager.instance.gameObject);
         SceneManager.LoadScene("MainMenu");
     }

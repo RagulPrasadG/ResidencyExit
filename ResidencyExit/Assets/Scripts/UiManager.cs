@@ -16,10 +16,15 @@ public class UiManager : MonoBehaviour
     [SerializeField] Transform centerPoint;
     [SerializeField] Transform bottomPoint;
     [SerializeField] Transform topPoint;
+
     [SerializeField] TMPro.TMP_Text coinText;
+
     [SerializeField] GameDataSO gameDataSO;
+    [SerializeField] AudioServiceScriptableObject audioServiceSO;
+
     [SerializeField] Button coinsCheatButton;
     [SerializeField] SaveManager saveManager;
+    [SerializeField] AudioSource audioSource;
     public float animationDuration  = 0.3f;
 
     public static UiManager instance { get; private set; }
@@ -45,6 +50,7 @@ public class UiManager : MonoBehaviour
 
     public void OpenLevelList()
     {
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         levelList.gameObject.SetActive(true);
         Sequence animationSequence = DOTween.Sequence();
         animationSequence.Append(mainMenuPanel.transform.DOMove(bottomPoint.position, animationDuration));
@@ -58,6 +64,7 @@ public class UiManager : MonoBehaviour
 
     public void OnBackButtonClickFromLevelList()
     {
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         mainMenuPanel.gameObject.SetActive(true);
         Sequence animationSequence = DOTween.Sequence();
         animationSequence.Append(levelList.transform.DOMove(topPoint.position, animationDuration));
@@ -70,6 +77,7 @@ public class UiManager : MonoBehaviour
     }
     public void OnBackButtonClickFromShopPanel()
     {
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         mainMenuPanel.gameObject.SetActive(true);
         Sequence animationSequence = DOTween.Sequence();
         animationSequence.Append(shopPanel.transform.DOMove(topPoint.position, animationDuration));
@@ -83,6 +91,7 @@ public class UiManager : MonoBehaviour
 
     public void OnBackButtonClickFromWatchADPanel()
     {
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         shopPanel.gameObject.SetActive(true);
         Sequence animationSequence = DOTween.Sequence();
         animationSequence.Append(watchAdPanel.transform.DOMove(topPoint.position, animationDuration));
@@ -96,6 +105,7 @@ public class UiManager : MonoBehaviour
 
     public void OpenWatchAdPanel()
     {
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         watchAdPanel.gameObject.SetActive(true);
         Sequence animationSequence = DOTween.Sequence();
         animationSequence.Append(shopPanel.transform.DOMove(bottomPoint.position, animationDuration));
@@ -110,6 +120,7 @@ public class UiManager : MonoBehaviour
 
     public void OpenShop()
     {
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         shopPanel.gameObject.SetActive(true);
         Sequence animationSequence = DOTween.Sequence();
         animationSequence.Append(mainMenuPanel.transform.DOMove(bottomPoint.position, animationDuration));
@@ -159,6 +170,7 @@ public class UiManager : MonoBehaviour
     public void ExitGame()
     {
         //Save
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         Application.Quit();
     }
 

@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: SoundDataSO
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 822e260c5868588479714a1c830a5816, type: 3}
-  - {fileID: 8300000, guid: 79838a0457323b948b2bc1a42c621f33, type: 3}
-  - {fileID: 8300000, guid: 547c9dfabba381949b07be91f79126d3, type: 3}
-  - {fileID: 8300000, guid: 5d8e7e46fd789cf4190ec922a819aa0a, type: 3}
-  - {fileID: 8300000, guid: 85cc84c30c5bc5f48b79843ab1bfe371, type: 3}
+  - audioClip: {fileID: 8300000, guid: 822e260c5868588479714a1c830a5816, type: 3}
+    audioType: 0
+  - audioClip: {fileID: 8300000, guid: 79838a0457323b948b2bc1a42c621f33, type: 3}
+    audioType: 1
+  - audioClip: {fileID: 8300000, guid: 547c9dfabba381949b07be91f79126d3, type: 3}
+    audioType: 2
+  - audioClip: {fileID: 8300000, guid: 5d8e7e46fd789cf4190ec922a819aa0a, type: 3}
+    audioType: 3
+  - audioClip: {fileID: 8300000, guid: 85cc84c30c5bc5f48b79843ab1bfe371, type: 3}
+    audioType: 4

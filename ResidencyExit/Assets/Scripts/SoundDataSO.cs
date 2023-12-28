@@ -5,11 +5,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="NewSoundData",menuName = "Data/NewSoundData")]
 public class SoundDataSO : ScriptableObject
 {
-    public List<AudioClip> audioClips;
+    public List<SoundData> audioClips;
 
-    public AudioClip GetClip(int index)
+    public AudioClip GetClip(AudioType audioType)
     {
-        return audioClips[index];
+        return audioClips.Find(audioData => audioData.audioType == audioType).audioClip;
     }
 
+}
+
+[System.Serializable]
+public struct SoundData
+{
+    public AudioClip audioClip;
+    public AudioType audioType;
+}
+
+public enum AudioType
+{
+    ButtonClick,
+    CoinCollect,
+    LevelUp,
+    BuySuccess,
+    CarCrash
 }

@@ -6,19 +6,11 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] SoundDataSO soundData;
     private AudioSource source;
-    public static AudioManager instance { get; private set; }
-
     private WaitForSeconds waitTime;
 
     private void Awake()
     {
         source = GetComponent<AudioSource>();
-
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
-
         DontDestroyOnLoad(this);
 
     }
@@ -28,32 +20,32 @@ public class AudioManager : MonoBehaviour
         source.clip = soundData.GetClip(0);
         source.Play();
     }
-    public void PlaySound(int index)
-    {
-        source.clip = soundData.GetClip(index);
-        source.PlayOneShot(source.clip);
-    }
-    public void PlaySoundLoop(int index,float pitch = 1)
-    {
-        source.pitch = pitch;
-        source.loop = true;
-        source.clip = soundData.GetClip(index);
-        source.Play();
+    //public void PlaySound(int index)
+    //{
+    //    source.clip = soundData.GetClip(index);
+    //    source.PlayOneShot(source.clip);
+    //}
+    //public void PlaySoundLoop(int index,float pitch = 1)
+    //{
+    //    source.pitch = pitch;
+    //    source.loop = true;
+    //    source.clip = soundData.GetClip(index);
+    //    source.Play();
 
-    }
+    //}
 
-    public void ResetAudioSource() 
-    {
-        source.clip = null;
-        source.pitch = 1;
-        source.loop = false;
-    }
+    //public void ResetAudioSource() 
+    //{
+    //    source.clip = null;
+    //    source.pitch = 1;
+    //    source.loop = false;
+    //}
 
-    public void PlaySoundAt(AudioSource source,int index)
-    {
-        source.clip = soundData.GetClip(index);
-        source.PlayOneShot(source.clip);
-    }
+    //public void PlaySoundAt(AudioSource source,int index)
+    //{
+    //    source.clip = soundData.GetClip(index);
+    //    source.PlayOneShot(source.clip);
+    //}
 
    
 

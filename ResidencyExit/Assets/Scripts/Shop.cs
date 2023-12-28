@@ -7,9 +7,11 @@ public class Shop : MonoBehaviour
     
     [SerializeField]RectTransform shopContentParent;
     [SerializeField] GameObject shopItemPrefab;
+    [SerializeField] AudioServiceScriptableObject audioServiceSO;
     [SerializeField] GameDataSO gameDataSO;
     [SerializeField] UiManager uiManager;
     [SerializeField] SaveManager saveManager;
+    [SerializeField] AudioSource audioSource;
     public List<ShopItem> shopItems = new List<ShopItem>();
 
     private void Start()
@@ -39,7 +41,7 @@ public class Shop : MonoBehaviour
 
     public void OnSelectItem(ShopItem item)
     {
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource,AudioType.ButtonClick);
             switch (item.carDataSO.carData.carStatus)
             {
                 case CarStatus.Buy:
@@ -50,7 +52,7 @@ public class Shop : MonoBehaviour
                     gameDataSO.coinAmount -= item.carDataSO.carData.amount;
                     item.ToggleButtonText(CarStatus.Equip);
                     item.carDataSO.carData.carStatus = CarStatus.Equip;
-                    AudioManager.instance.PlaySound(3);
+                    audioServiceSO.PlaySFX(audioSource,AudioType.BuySuccess);
                     saveManager.SaveData();
                     //uiManager.SetCoinText();
                 }

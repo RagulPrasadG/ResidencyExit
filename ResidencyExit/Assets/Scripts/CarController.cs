@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 public class CarController : MonoBehaviour
 {
+    [SerializeField] AudioServiceScriptableObject audioServiceSO;
+    [SerializeField] AudioSource audioSource;
     [SerializeField] float carMoveSpeed;
 
 
@@ -31,7 +33,7 @@ public class CarController : MonoBehaviour
     {
         if (!canMove) return;
 
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource,AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         Vector3 endPosition = GridManager.instance.GetLeftEndPosition();
         if (endPosition == Vector3.zero)
@@ -59,7 +61,7 @@ public class CarController : MonoBehaviour
     {
         if (!canMove) return;
 
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         
         Vector3 endPosition = GridManager.instance.GetRightEndPosition();
@@ -89,7 +91,7 @@ public class CarController : MonoBehaviour
     {
         if (!canMove) return;
 
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         Vector3 endPosition = GridManager.instance.GetUpEndPosition();
         if (endPosition == Vector3.zero)
@@ -116,7 +118,7 @@ public class CarController : MonoBehaviour
     {
         if (!canMove) return;
 
-        AudioManager.instance.PlayClick();
+        audioServiceSO.PlaySFX(audioSource, AudioType.ButtonClick);
         animator.SetBool("isMoving", true);
         Vector3 endPosition = GridManager.instance.GetDownEndPosition();
         if (endPosition == Vector3.zero)
