@@ -4,26 +4,20 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameService : Singleton<GameService>
 {
     public List<CarDataSO> carData;
     [SerializeField] GameDataSO gameData;
     [SerializeField] LevelDataSO levelDataSO;
     public int collectedCoins;
 
-    public static GameManager instance { get; private set; }
-    private void Awake()
+    protected override void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
-
+        base.Awake();
         DontDestroyOnLoad(this);
-
         Application.targetFrameRate = 60;
     }
-   
+
 
     public void OnGoalReached()
     {

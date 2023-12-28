@@ -19,7 +19,7 @@ public class Shop : MonoBehaviour
 
     private void InitShop()
     {
-        foreach(CarDataSO car in GameManager.instance.carData)
+        foreach(CarDataSO car in GameService.Instance.carData)
         {
             var temp = Instantiate(shopItemPrefab);
             temp.transform.SetParent(shopContentParent.transform, false);
