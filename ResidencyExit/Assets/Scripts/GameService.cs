@@ -7,14 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameService : Singleton<GameService>
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] GameDataSO  gameData;
+    [SerializeField] GameDataSO  gameDataSO;
     [SerializeField] LevelDataSO levelDataSO;
     [SerializeField] SaveServiceScriptableObject  saveServiceSO;
-    [SerializeField] AudioServiceScriptableObject soundServiceSO;
+    [SerializeField] AudioServiceScriptableObject audioServiceSO;
     [SerializeField] EventServiceScriptableObject eventServiceSO;
     public int collectedCoins;
 
     public MainMenuUIService mainMenuUIService;
+    public VehicleService vehicleService;
 
     protected override void Awake()
     {
@@ -37,37 +38,38 @@ public class GameService : Singleton<GameService>
     public void Init()
     {
         Application.targetFrameRate = 60;
+        vehicleService = new VehicleService(gameDataSO,eventServiceSO,audioServiceSO);
     }
 
     public void OnGoalReached()
     {
-        gameData.tries = 0;
+        gameDataSO.tries = 0;
         StartCoroutine(GamePlayUI.instance.OnGameWin());
     }
 
 
     public void IncrementLevel()
     {
-        if (gameData.currentLevel < levelDataSO.levelDataCSV.Length - 1)
-            gameData.currentLevel++;
+        if (gameDataSO.currentLevel < levelDataSO.levelDataCSV.Length - 1)
+            gameDataSO.currentLevel++;
 
     }
 
     public void OnCoinCollect()
     {
         collectedCoins += 10;
-        gameData.coinAmount += collectedCoins;
+        gameDataSO.coinAmount += collectedCoins;
         
     }
 
     public void OnCarCrash()
     {
-        gameData.tries++;
-        if(gameData.tries % 3 == 0)
+        gameDataSO.tries++;
+        if(gameDataSO.tries % 3 == 0)
         {
             AdManager.instance.ShowInterstitialAd();
         }
-        soundServiceSO.PlaySFX(audioSource,AudioType.CarCrash);  //play lose sound here
+        audioServiceSO.PlaySFX(audioSource,AudioType.CarCrash);  //play lose sound here
         StartCoroutine(GamePlayUI.instance.OnGameLose());
     }
 

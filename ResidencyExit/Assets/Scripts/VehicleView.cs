@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCar : MonoBehaviour
+public class VehicleView : MonoBehaviour
 {
-    [SerializeField] EventServiceScriptableObject eventServiceSO;
-    [SerializeField] AudioServiceScriptableObject audioServiceSO;
-    private AudioSource source;
+    public VehicleController vehicleController;
+    public Animator animator { get; set; }
+    public AudioSource source { get; set; }
+
     private void Awake()
     {
         source = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,14 +19,14 @@ public class PlayerCar : MonoBehaviour
       
         if(other.gameObject.CompareTag("Coin"))
         {
-            audioServiceSO.PlaySFX(source, AudioType.CoinCollect);
-            eventServiceSO.OnCollectCoin.RaiseEvent();
+            vehicleController.audioServiceSO.PlaySFX(source, AudioType.CoinCollect);
+            vehicleController.eventServiceSO.OnCollectCoin.RaiseEvent();
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("GoalRing"))
         {
-            eventServiceSO.OnReachGoal.RaiseEvent();
+            vehicleController.eventServiceSO.OnReachGoal.RaiseEvent();
             Destroy(other.gameObject, 1f);
         }
 

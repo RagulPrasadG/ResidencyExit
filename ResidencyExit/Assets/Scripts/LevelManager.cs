@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance { get; private set; }
     public GameObject carInstance { get; private set; }
-
+   
     public int currentLevel = 0;
     private int aiCarCount = 1;
 
@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
                     Vector3 Position = GridManager.instance.GetCellCenter(GridManager.instance.GetCellPosition(i, j));
                     GridManager.instance.HorizontalIndex = i;
                     GridManager.instance.VerticalIndex = j;
-                    carInstance = Instantiate(gameDataSO.playercarPrefab, Position, Quaternion.identity);
+                    GameService.Instance.vehicleService.CreateVehicle(Position);
                     followCamera.Follow = carInstance.transform;
                     followCamera.LookAt = carInstance.transform;
                 }

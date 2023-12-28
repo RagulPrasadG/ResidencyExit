@@ -1675,10 +1675,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 289869601}
-  gameData: {fileID: 11400000, guid: a1349e942b32dd047b131d203cc5c11b, type: 2}
+  gameDataSO: {fileID: 11400000, guid: a1349e942b32dd047b131d203cc5c11b, type: 2}
   levelDataSO: {fileID: 11400000, guid: 5f290540f623fad41a37dd582c55b560, type: 2}
   saveServiceSO: {fileID: 11400000, guid: e8dcd69f352b61f4d92def983f85f755, type: 2}
-  soundServiceSO: {fileID: 11400000, guid: fde4f649f54be374eba5e06e5da22d1c, type: 2}
+  audioServiceSO: {fileID: 11400000, guid: fde4f649f54be374eba5e06e5da22d1c, type: 2}
+  eventServiceSO: {fileID: 11400000, guid: 9cd2053ea2dbb7645a2fa56ef95e4746, type: 2}
   collectedCoins: 0
   mainMenuUIService: {fileID: 1070061464}
 --- !u!4 &289869600

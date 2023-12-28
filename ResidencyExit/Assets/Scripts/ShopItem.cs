@@ -11,18 +11,18 @@ public class ShopItem : MonoBehaviour
     [SerializeField] TMP_Text buyText;
     [SerializeField] TMP_Text equipText;
     public Button button;
-    public CarDataSO carDataSO { get; set; }
+    public VehicleDataScriptableObject carDataSO { get; set; }
    
    
-    public void InitItem(CarDataSO carDataSO)
+    public void InitItem(VehicleDataScriptableObject carDataSO)
     {
         this.carDataSO = carDataSO;
-        this.carImage.sprite = carDataSO.carData.carSprite;
-        ToggleButtonText(carDataSO.carData.carStatus);
+        this.carImage.sprite = carDataSO.vehicleData.vehicleSprite;
+        ToggleButtonText(carDataSO.vehicleData.vehicleStatus);
         
     }
 
-    public void ToggleButtonText(CarStatus status)
+    public void ToggleButtonText(VehicleStatus status)
     {
         equippedText.gameObject.SetActive(false);
         buyText.gameObject.SetActive(false);
@@ -30,15 +30,15 @@ public class ShopItem : MonoBehaviour
 
         switch (status)
         {
-            case CarStatus.Equip:
+            case VehicleStatus.Equip:
                 equipText.gameObject.SetActive(true);
                 break;
-            case CarStatus.Equipped:
+            case VehicleStatus.Equipped:
                 equippedText.gameObject.SetActive(true);
                 break;
-            case CarStatus.Buy:
+            case VehicleStatus.Buy:
                 buyText.gameObject.SetActive(true);
-                buyText.text += carDataSO.carData.amount.ToString();
+                buyText.text += carDataSO.vehicleData.amount.ToString();
                 break;
         }
 

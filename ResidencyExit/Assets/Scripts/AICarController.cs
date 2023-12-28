@@ -83,14 +83,6 @@ public class AICarController : MonoBehaviour
         return Vector3.zero;
     }
 
-    //private void OnCollisionEnter(Collision other)
-    //{
-    //    if(other.collider.CompareTag("PlayerCar"))
-    //    {
-    //        DOTween.KillAll();
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //    }
-    //}
 }
 
 

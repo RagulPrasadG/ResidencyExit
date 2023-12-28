@@ -22,15 +22,15 @@ public class Shop : MonoBehaviour
 
     private void InitShop()
     {
-        foreach(CarDataSO car in gameDataSO.carsData)
+        foreach(VehicleDataScriptableObject car in gameDataSO.vehicles)
         {
             var temp = Instantiate(shopItemPrefab);
             temp.transform.SetParent(shopContentParent.transform, false);
             ShopItem item = temp.GetComponent<ShopItem>();
 
-            if(car.carData.carStatus == CarStatus.Equipped)
+            if(car.vehicleData.vehicleStatus == VehicleStatus.Equipped)
             {
-                gameDataSO.playercarPrefab = car.carData.carPrefab;
+                gameDataSO.playerVehiclePrefab = car.vehicleData.vehiclePrefab;
             }
 
             shopItems.Add(item);
@@ -43,16 +43,16 @@ public class Shop : MonoBehaviour
     public void OnSelectItem(ShopItem item)
     {
         audioServiceSO.PlaySFX(audioSource,AudioType.ButtonClick);
-            switch (item.carDataSO.carData.carStatus)
+            switch (item.carDataSO.vehicleData.vehicleStatus)
             {
-                case CarStatus.Buy:
+                case VehicleStatus.Buy:
                 //implement buy based on funds
-                if(item.carDataSO.carData.amount <= gameDataSO.coinAmount)
+                if(item.carDataSO.vehicleData.amount <= gameDataSO.coinAmount)
                 {
-                    uiManager.TweenCoinVisual(item.carDataSO.carData.amount);
-                    gameDataSO.coinAmount -= item.carDataSO.carData.amount;
-                    item.ToggleButtonText(CarStatus.Equip);
-                    item.carDataSO.carData.carStatus = CarStatus.Equip;
+                    uiManager.TweenCoinVisual(item.carDataSO.vehicleData.amount);
+                    gameDataSO.coinAmount -= item.carDataSO.vehicleData.amount;
+                    item.ToggleButtonText(VehicleStatus.Equip);
+                    item.carDataSO.vehicleData.vehicleStatus = VehicleStatus.Equip;
                     audioServiceSO.PlaySFX(audioSource,AudioType.BuySuccess);
                     saveServiceSO.SaveData();
                     //uiManager.SetCoinText();
@@ -63,18 +63,18 @@ public class Shop : MonoBehaviour
                     uiManager.OpenWatchAdPanel();
                 }
                     break;
-                case CarStatus.Equip:
+                case VehicleStatus.Equip:
                  foreach(ShopItem shopitem in shopItems)
                  {
-                    if(shopitem.carDataSO.carData.carStatus == CarStatus.Equipped)
+                    if(shopitem.carDataSO.vehicleData.vehicleStatus == VehicleStatus.Equipped)
                     {
-                        shopitem.carDataSO.carData.carStatus = CarStatus.Equip;
-                        shopitem.ToggleButtonText(CarStatus.Equip);
+                        shopitem.carDataSO.vehicleData.vehicleStatus = VehicleStatus.Equip;
+                        shopitem.ToggleButtonText(VehicleStatus.Equip);
                     }
                  }
-                item.carDataSO.carData.carStatus = CarStatus.Equipped;
-                item.ToggleButtonText(CarStatus.Equipped);
-                gameDataSO.playercarPrefab = item.carDataSO.carData.carPrefab;
+                item.carDataSO.vehicleData.vehicleStatus = VehicleStatus.Equipped;
+                item.ToggleButtonText(VehicleStatus.Equipped);
+                gameDataSO.playerVehiclePrefab = item.carDataSO.vehicleData.vehiclePrefab;
                 saveServiceSO.SaveData();
                 break;
         }

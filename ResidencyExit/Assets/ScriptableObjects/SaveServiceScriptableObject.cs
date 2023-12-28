@@ -8,7 +8,7 @@ using System.IO;
 public class SaveServiceScriptableObject : ScriptableObject
 {
     public GameDataSO gameData;
-    private List<CarStatus> carStatusList = new List<CarStatus>();
+    private List<VehicleStatus> carStatusList = new List<VehicleStatus>();
 
     public void LoadData()
     {
@@ -42,7 +42,7 @@ public class SaveServiceScriptableObject : ScriptableObject
         SaveContainer saveContainer = JsonUtility.FromJson<SaveContainer>(fileString);
         for (int i = 0; i < saveContainer.carstatusList.Count; i++)
         {
-            gameData.carsData[i].carData.carStatus = saveContainer.carstatusList[i];
+            gameData.vehicles[i].vehicleData.vehicleStatus = saveContainer.carstatusList[i];
         }
         gameData.completedLevels = saveContainer.completedLevels;
         gameData.coinAmount = saveContainer.coinAmount;
@@ -52,9 +52,9 @@ public class SaveServiceScriptableObject : ScriptableObject
     public void SaveCarStatus()
     {
         carStatusList.Clear();
-        for (int i = 0; i < gameData.carsData.Count; i++)
+        for (int i = 0; i < gameData.vehicles.Count; i++)
         {
-            carStatusList.Add(gameData.carsData[i].carData.carStatus);
+            carStatusList.Add(gameData.vehicles[i].vehicleData.vehicleStatus);
         }
     }
 }
@@ -62,7 +62,7 @@ public class SaveServiceScriptableObject : ScriptableObject
 [System.Serializable]
 public class SaveContainer
 {
-    public List<CarStatus> carstatusList = new List<CarStatus>();
+    public List<VehicleStatus> carstatusList = new List<VehicleStatus>();
     public int coinAmount;
     public int completedLevels;
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewGameData",menuName = "Data/NewGameData")]
 public class GameDataSO : ScriptableObject
 {
-    public List<CarDataSO> carsData;
-    public GameObject playercarPrefab;
+    public List<VehicleDataScriptableObject> vehicles;
+    public VehicleView playerVehiclePrefab;
     public GameObject[] aiCarPrefab;
     public GameObject[] obstaclePrefab;
     public int currentLevel = 0;
