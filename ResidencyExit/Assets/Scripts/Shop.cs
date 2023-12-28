@@ -7,6 +7,7 @@ public class Shop : MonoBehaviour
     
     [SerializeField]RectTransform shopContentParent;
     [SerializeField] GameObject shopItemPrefab;
+    [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
     [SerializeField] GameDataSO gameDataSO;
     [SerializeField] UiManager uiManager;
@@ -53,7 +54,7 @@ public class Shop : MonoBehaviour
                     item.ToggleButtonText(CarStatus.Equip);
                     item.carDataSO.carData.carStatus = CarStatus.Equip;
                     audioServiceSO.PlaySFX(audioSource,AudioType.BuySuccess);
-                    saveManager.SaveData();
+                    saveServiceSO.SaveData();
                     //uiManager.SetCoinText();
                 }
                 else
@@ -74,7 +75,7 @@ public class Shop : MonoBehaviour
                 item.carDataSO.carData.carStatus = CarStatus.Equipped;
                 item.ToggleButtonText(CarStatus.Equipped);
                 gameDataSO.playercarPrefab = item.carDataSO.carData.carPrefab;
-                saveManager.SaveData();
+                saveServiceSO.SaveData();
                 break;
         }
       

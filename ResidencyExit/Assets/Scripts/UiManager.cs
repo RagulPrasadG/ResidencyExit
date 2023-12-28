@@ -20,14 +20,17 @@ public class UiManager : MonoBehaviour
     [SerializeField] TMPro.TMP_Text coinText;
 
     [SerializeField] GameDataSO gameDataSO;
+    [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
 
     [SerializeField] Button coinsCheatButton;
-    [SerializeField] SaveManager saveManager;
     [SerializeField] AudioSource audioSource;
+    
+    private SaveManager saveManager;
+
     public float animationDuration  = 0.3f;
 
-    public static UiManager instance { get; private set; }
+
 
     private void Start()
     {
@@ -36,16 +39,13 @@ public class UiManager : MonoBehaviour
 #else
         coinsCheatButton.gameObject.SetActive(false);
 #endif
-        //coinsCheatButton.gameObject.SetActive(true);
         SetCoinText();
 
     }
-    private void Awake()
+
+    public void Init(SaveManager saveManager)
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
+        this.saveManager = saveManager;
     }
 
     public void OpenLevelList()
@@ -135,7 +135,7 @@ public class UiManager : MonoBehaviour
     public void SetCoinText()
     {
         coinText.text = gameDataSO.coinAmount.ToString();
-        saveManager.SaveData();
+        saveServiceSO.SaveData();
     }
 
     public void TweenCoinVisual(int toValue)

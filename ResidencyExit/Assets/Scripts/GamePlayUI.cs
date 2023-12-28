@@ -28,7 +28,7 @@ public class GamePlayUI : MonoBehaviour
     [SerializeField] Button pauseButton;
     [SerializeField] Button gameWinPanelMenuButton;
     [SerializeField] Button gameWinPanelNextLevelButton;
-    [SerializeField] SaveManager saveManager;
+    [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] AudioSource audioSource;
 
     public static GamePlayUI instance { get; private set; }
@@ -53,7 +53,7 @@ public class GamePlayUI : MonoBehaviour
         if (gameDataSO.completedLevels < levelDataSO.levelDataCSV.Length - 1)
         {
             gameDataSO.completedLevels++;
-            saveManager.SaveData();
+            saveServiceSO.SaveData();
         }
 
 

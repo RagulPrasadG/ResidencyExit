@@ -9,16 +9,30 @@ public class GameService : Singleton<GameService>
     [SerializeField] AudioSource audioSource;
     [SerializeField] GameDataSO gameData;
     [SerializeField] LevelDataSO levelDataSO;
+    [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] AudioServiceScriptableObject soundServiceSO;
     public int collectedCoins;
+
+    public UiManager uIManager;
+    public SaveManager saveManager;
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
-        Application.targetFrameRate = 60;
+        Init();
     }
 
+    public void Start()
+    {
+        saveServiceSO.LoadData();
+    }
+
+    public void Init()
+    {
+        Application.targetFrameRate = 60;
+        uIManager.Init(saveManager);
+    }
 
     public void OnGoalReached()
     {
@@ -52,4 +66,8 @@ public class GameService : Singleton<GameService>
         StartCoroutine(GamePlayUI.instance.OnGameLose());
     }
 
+    public void OnApplicationQuit()
+    {
+        saveServiceSO.SaveData();
+    }
 }
