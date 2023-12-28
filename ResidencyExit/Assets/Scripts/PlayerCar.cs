@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCar : MonoBehaviour
 {
+    [SerializeField] EventServiceScriptableObject eventServiceSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
     private AudioSource source;
     private void Awake()
@@ -17,14 +18,13 @@ public class PlayerCar : MonoBehaviour
         if(other.gameObject.CompareTag("Coin"))
         {
             audioServiceSO.PlaySFX(source, AudioType.CoinCollect);
-            GameService.Instance.OnCoinCollect();
+            eventServiceSO.OnCollectCoin.RaiseEvent();
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("GoalRing"))
         {
-
-            GameService.Instance.OnGoalReached();
+            eventServiceSO.OnReachGoal.RaiseEvent();
             Destroy(other.gameObject, 1f);
         }
 

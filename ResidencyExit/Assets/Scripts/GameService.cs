@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameService : Singleton<GameService>
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] GameDataSO gameData;
+    [SerializeField] GameDataSO  gameData;
     [SerializeField] LevelDataSO levelDataSO;
-    [SerializeField] SaveServiceScriptableObject saveServiceSO;
+    [SerializeField] SaveServiceScriptableObject  saveServiceSO;
     [SerializeField] AudioServiceScriptableObject soundServiceSO;
+    [SerializeField] EventServiceScriptableObject eventServiceSO;
     public int collectedCoins;
 
     public MainMenuUIService mainMenuUIService;
@@ -25,6 +26,12 @@ public class GameService : Singleton<GameService>
     public void Start()
     {
         saveServiceSO.LoadData();
+    }
+
+    public void SetEvents()
+    {
+        eventServiceSO.OnCollectCoin.AddListener(OnCoinCollect);
+        eventServiceSO.OnReachGoal.AddListener(OnGoalReached);
     }
 
     public void Init()
