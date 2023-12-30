@@ -3,11 +3,7 @@ This is a turn based game made with unity 3d  for android where we have to guide
 
 <h2> Gameplay <h2>
 The game has 35 levels each with increasing area and difficulty.The goal of the player in each level is to move towards the residency's exit to complete the level
-The exit is marked with a pink blip like this 👇:
-
-
-
-<img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/b64bf4f5-8707-49bc-9985-4c926e6559b5" alt="GameIcon" width="300">
+The exit is marked with a pink blip like this 👇: <img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/b64bf4f5-8707-49bc-9985-4c926e6559b5" alt="GameIcon" width="300">
 
 <h2> Currency <h2>
 Coins can be earned in the game while moving with vehicle and also by watching ads, each collected coin gives you 10X coins.
