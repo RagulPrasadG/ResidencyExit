@@ -3,14 +3,16 @@ This is a turn based game made with unity 3d  for android where we have to guide
 
 <h2> Gameplay </h2>
 The game has 35 levels each with increasing area and difficulty.The goal of the player in each level is to move towards the residency's exit to complete the level
-The exit is marked with a pink blip like this 👇: <img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/b64bf4f5-8707-49bc-9985-4c926e6559b5" alt="GameIcon" width="300">
+The exit is marked with a pink blip like this 👇: 
+<img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/b64bf4f5-8707-49bc-9985-4c926e6559b5" alt="GameIcon" width="300">
 
 <h2> Currency </h2>
 Coins can be earned in the game while moving with vehicle and also by watching ads, each collected coin gives you 10X coins.
 
 <h2> Shop </h2>
 Earned coins can be used to purchase different types of vehicles from the shop section of the game,Premiuem vehicles like the Jipsy,Aventador and Aston Martin is always expensive to afford.
-    
+<img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/32334e78-144a-4af9-ab50-874bd37e0f9c" alt="Shop" width="300">
+
 <h2> Controls </h2>
 ![SC1](https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/a6a613ef-ffd9-496e-87af-d7a17b6f66eb)
 There will be four directional buttons to guide the vehicle.
