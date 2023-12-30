@@ -1,6 +1,8 @@
 # ResidencyExit
 This is a turn based game made with unity 3d  for android where we have to guide our vehicle towards the residency's exit.
 
+<h1> Game Overview </h1>
+
 <h2> Gameplay </h2>
 The game has 35 levels each with increasing area and difficulty.The goal of the player in each level is to move towards the residency's exit to complete the level
 The exit is marked with a pink blip like this 👇: 
@@ -18,6 +20,9 @@ There will be four directional buttons to guide the vehicle👇: <br>
 <img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/a6a613ef-ffd9-496e-87af-d7a17b6f66eb" alt="Controls" width="300">
 
 
+<h1> Technical Overview </h1>
+
+<h2> ScreenShots </h2>
 
 ![FeaturedGraphic_1024x500](https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/d914034b-0b0b-45f9-b83b-3754761f297f)
 
