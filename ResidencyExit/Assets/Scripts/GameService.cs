@@ -86,7 +86,7 @@ public class GameService : Singleton<GameService>
         gameDataSO.tries++;
         if(gameDataSO.tries % 3 == 0)
         {
-            AdManager.instance.ShowInterstitialAd();
+            AdService.instance.ShowInterstitialAd();
         }
         audioServiceSO.PlaySFX(audioSource,AudioType.CarCrash);  //play lose sound here
         StartCoroutine(gameplayUIService.OnGameLose());

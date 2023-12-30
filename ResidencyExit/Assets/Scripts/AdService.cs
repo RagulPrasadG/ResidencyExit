@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 
-public class AdManager : MonoBehaviour
+public class AdService : MonoBehaviour
 {
     [SerializeField] GameDataScriptableObject gameData;
 
-    public static AdManager instance { get; private set; }
+    public static AdService instance { get; private set; }
 
 #if UNITY_EDITOR || Dev
     private string bannerAdId = "ca-app-pub-3940256099942544/6300978111";
