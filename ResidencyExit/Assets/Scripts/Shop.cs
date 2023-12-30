@@ -5,13 +5,11 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     
-    [SerializeField]RectTransform shopContentParent;
+    [SerializeField] RectTransform shopContentParent;
     [SerializeField] GameObject shopItemPrefab;
     [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
     [SerializeField] GameDataSO gameDataSO;
-    [SerializeField] MainMenuUIService uiManager;
-    [SerializeField] SaveManager saveManager;
     [SerializeField] AudioSource audioSource;
     public List<ShopItem> shopItems = new List<ShopItem>();
 
@@ -49,18 +47,17 @@ public class Shop : MonoBehaviour
                 //implement buy based on funds
                 if(item.carDataSO.vehicleData.amount <= gameDataSO.coinAmount)
                 {
-                    uiManager.TweenCoinVisual(item.carDataSO.vehicleData.amount);
+                    GameService.Instance.mainMenuUIService.TweenCoinVisual(item.carDataSO.vehicleData.amount);
                     gameDataSO.coinAmount -= item.carDataSO.vehicleData.amount;
                     item.ToggleButtonText(VehicleStatus.Equip);
                     item.carDataSO.vehicleData.vehicleStatus = VehicleStatus.Equip;
                     audioServiceSO.PlaySFX(audioSource,AudioType.BuySuccess);
                     saveServiceSO.SaveData();
-                    //uiManager.SetCoinText();
                 }
                 else
                 {
                     //toggle not enough coins panel to watch ad
-                    uiManager.OpenWatchAdPanel();
+                    GameService.Instance.mainMenuUIService.OpenWatchAdPanel();
                 }
                     break;
                 case VehicleStatus.Equip:

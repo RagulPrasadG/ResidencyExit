@@ -14,8 +14,9 @@ public class GameService : Singleton<GameService>
     [SerializeField] EventServiceScriptableObject eventServiceSO;
     public int collectedCoins;
 
-    public MainMenuUIService mainMenuUIService;
-    public VehicleService vehicleService;
+    public MainMenuUIService mainMenuUIService { get; set; }
+    public GamePlayUIService gameplayUIService { get; set; }
+    public VehicleService vehicleService { get; set; }
 
     protected override void Awake()
     {
@@ -39,15 +40,30 @@ public class GameService : Singleton<GameService>
 
     public void Init()
     {
+        SceneManager.sceneLoaded += OnSceneChange;
         Application.targetFrameRate = 60;
         vehicleService = new VehicleService(gameDataSO,eventServiceSO,audioServiceSO);
         SetEvents();
     }
 
+    public void OnSceneChange(Scene scene,LoadSceneMode sceneMode)
+    {
+        if (scene.name == "MainMenu")
+        {
+            gameplayUIService = null;
+            mainMenuUIService = FindObjectOfType<MainMenuUIService>();
+        }
+        else if (scene.name == "Gameplay")
+        {
+            mainMenuUIService = null;
+            gameplayUIService = FindObjectOfType<GamePlayUIService>();
+        }
+    }
+
     public void OnGoalReached()
     {
         gameDataSO.tries = 0;
-        StartCoroutine(GamePlayUI.instance.OnGameWin());
+        StartCoroutine(gameplayUIService.OnGameWin());
     }
 
 
@@ -73,7 +89,7 @@ public class GameService : Singleton<GameService>
             AdManager.instance.ShowInterstitialAd();
         }
         audioServiceSO.PlaySFX(audioSource,AudioType.CarCrash);  //play lose sound here
-        StartCoroutine(GamePlayUI.instance.OnGameLose());
+        StartCoroutine(gameplayUIService.OnGameLose());
     }
 
     public void OnApplicationQuit()

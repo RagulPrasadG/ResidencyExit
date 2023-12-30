@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GamePlayUI : MonoBehaviour
+public class GamePlayUIService : MonoBehaviour
 {
     [Header("PANELS")]
     [SerializeField] RectTransform gameWinPanel;
@@ -45,18 +45,12 @@ public class GamePlayUI : MonoBehaviour
     [Space(10)]
     [SerializeField] AudioSource audioSource;
 
-    public static GamePlayUI instance { get; private set; }
 
     private int tweenWinCoinAmount = 0;
     private int tweenLoseCoinAmount = 0;
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
-
         AdManager.instance.LoadInterstitialAd();
         SetEvents();
     }
