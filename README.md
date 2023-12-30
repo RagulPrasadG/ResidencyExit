@@ -32,6 +32,7 @@ There will be four directional buttons to guide the vehicle👇:
 <h1> Technical Overview : </h1>
 
 <h2> Design Pattern & Principles </h2>
+
 * Singleton pattern
 * Observer pattern
 * Service Locator
