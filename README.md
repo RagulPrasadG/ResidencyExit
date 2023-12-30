@@ -15,7 +15,7 @@ Earned coins can be used to purchase different types of vehicles from the shop s
 
 <h2> Controls </h2>
 There will be four directional buttons to guide the vehicle👇:
-<img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/a6a613ef-ffd9-496e-87af-d7a17b6f66eb" alt="Controls" width="500">
+<img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/a6a613ef-ffd9-496e-87af-d7a17b6f66eb" alt="Controls" width="300">
 
 
 
