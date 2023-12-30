@@ -6,6 +6,7 @@ The game has 35 levels each with increasing area and difficulty.The goal of the 
 The exit is marked with a pink blip like this 👇:
   
 ![GameIcon](https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/b64bf4f5-8707-49bc-9985-4c926e6559b5)
+<img src="[https://your-image-url.jpg](https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/b64bf4f5-8707-49bc-9985-4c926e6559b5)" width="300">
 
 <h2> Currency <h2>
 Coins can be earned in the game while moving with vehicle and also by watching ads, each collected coin gives you 10X coins.
