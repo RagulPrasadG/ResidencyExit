@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewGameData",menuName = "Data/NewGameData")]
-public class GameDataSO : ScriptableObject
+public class GameDataScriptableObject : ScriptableObject
 {
     public List<VehicleDataScriptableObject> vehicles;
     public VehicleView playerVehiclePrefab;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelDataSO",menuName = "Data/NewData")]
-public class LevelDataSO : ScriptableObject
+public class LevelDataScriptableObject : ScriptableObject
 {
     public LevelData[] levelData;
     public TextAsset[] levelDataCSV;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="NewSoundData",menuName = "Data/NewSoundData")]
-public class SoundDataSO : ScriptableObject
+public class SoundDataScriptableObject : ScriptableObject
 {
     public List<SoundData> audioClips;
 

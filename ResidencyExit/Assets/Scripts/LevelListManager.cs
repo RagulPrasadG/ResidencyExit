@@ -8,8 +8,8 @@ public class LevelListManager : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject levelButtonPrefab;
-    [SerializeField] LevelDataSO levelData;
-    [SerializeField] GameDataSO gameDataSO;
+    [SerializeField] LevelDataScriptableObject levelData;
+    [SerializeField] GameDataScriptableObject gameDataSO;
 
     private List<LevelButton> levelButtons;
 

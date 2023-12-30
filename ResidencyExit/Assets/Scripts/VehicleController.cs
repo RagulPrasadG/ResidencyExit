@@ -8,12 +8,12 @@ public class VehicleController
 {
     public EventServiceScriptableObject eventServiceSO;
     public AudioServiceScriptableObject audioServiceSO;
-    public GameDataSO gameDataSO;
+    public GameDataScriptableObject gameDataSO;
 
     public VehicleView vehicleView;
     private bool canMove = true;
 
-    public VehicleController(GameDataSO gameDataSO, 
+    public VehicleController(GameDataScriptableObject gameDataSO, 
         EventServiceScriptableObject eventServiceSO,
         AudioServiceScriptableObject audioServiceSO)
     {

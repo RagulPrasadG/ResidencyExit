@@ -13,8 +13,8 @@ public class GridManager : MonoBehaviour
     public int HorizontalIndex;
 
 
-    [SerializeField] LevelDataSO levelDataSO;
-    [SerializeField] GameDataSO gameDataSO;
+    [SerializeField] LevelDataScriptableObject levelDataSO;
+    [SerializeField] GameDataScriptableObject gameDataSO;
     public static GridManager instance { get; private set; }
 
     private void Awake()

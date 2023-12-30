@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameService : Singleton<GameService>
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] GameDataSO  gameDataSO;
-    [SerializeField] LevelDataSO levelDataSO;
+    [SerializeField] GameDataScriptableObject  gameDataSO;
+    [SerializeField] LevelDataScriptableObject levelDataSO;
     [SerializeField] SaveServiceScriptableObject  saveServiceSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
     [SerializeField] EventServiceScriptableObject eventServiceSO;

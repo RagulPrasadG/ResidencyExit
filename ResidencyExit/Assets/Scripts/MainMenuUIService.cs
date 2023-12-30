@@ -19,7 +19,7 @@ public class MainMenuUIService : MonoBehaviour
 
     [SerializeField] TMPro.TMP_Text coinText;
 
-    [SerializeField] GameDataSO gameDataSO;
+    [SerializeField] GameDataScriptableObject gameDataSO;
     [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
 

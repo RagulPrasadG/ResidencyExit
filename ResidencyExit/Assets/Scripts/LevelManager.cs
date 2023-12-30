@@ -6,10 +6,10 @@ using Cinemachine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] LevelDataSO levelDataSO;
+    [SerializeField] LevelDataScriptableObject levelDataSO;
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject cornerWallPrefab;
-    [SerializeField] GameDataSO gameDataSO;
+    [SerializeField] GameDataScriptableObject gameDataSO;
     [SerializeField] GameObject goalRing;
 
     [Header("Coin")]

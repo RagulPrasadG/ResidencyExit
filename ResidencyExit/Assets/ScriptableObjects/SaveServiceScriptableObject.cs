@@ -7,7 +7,7 @@ using System.IO;
 [CreateAssetMenu(fileName = "NewService",menuName = "Data/NewService")]
 public class SaveServiceScriptableObject : ScriptableObject
 {
-    public GameDataSO gameData;
+    public GameDataScriptableObject gameData;
     private List<VehicleStatus> carStatusList = new List<VehicleStatus>();
 
     public void LoadData()

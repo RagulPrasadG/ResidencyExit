@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class VehicleService 
 {
-    private GameDataSO gameDataSO;
+    private GameDataScriptableObject gameDataSO;
     private EventServiceScriptableObject eventServiceSO;
     private AudioServiceScriptableObject audioServiceSO;
 
-    public VehicleService(GameDataSO gameDataSO, EventServiceScriptableObject eventServiceSO, 
+    public VehicleService(GameDataScriptableObject gameDataSO, EventServiceScriptableObject eventServiceSO, 
         AudioServiceScriptableObject audioServiceSO)
     {
         this.gameDataSO = gameDataSO;

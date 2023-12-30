@@ -5,7 +5,7 @@ using GoogleMobileAds.Api;
 
 public class AdManager : MonoBehaviour
 {
-    [SerializeField] GameDataSO gameData;
+    [SerializeField] GameDataScriptableObject gameData;
 
     public static AdManager instance { get; private set; }
 

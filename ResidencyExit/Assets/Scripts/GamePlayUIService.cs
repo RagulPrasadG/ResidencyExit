@@ -23,8 +23,8 @@ public class GamePlayUIService : MonoBehaviour
 
     [Space(10)]
     [Header("ScriptableObjects")]
-    [SerializeField] GameDataSO gameDataSO;
-    [SerializeField] LevelDataSO levelDataSO;
+    [SerializeField] GameDataScriptableObject gameDataSO;
+    [SerializeField] LevelDataScriptableObject levelDataSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
     [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] EventServiceScriptableObject eventServiceSO;

@@ -9,7 +9,7 @@ public class Shop : MonoBehaviour
     [SerializeField] GameObject shopItemPrefab;
     [SerializeField] SaveServiceScriptableObject saveServiceSO;
     [SerializeField] AudioServiceScriptableObject audioServiceSO;
-    [SerializeField] GameDataSO gameDataSO;
+    [SerializeField] GameDataScriptableObject gameDataSO;
     [SerializeField] AudioSource audioSource;
     public List<ShopItem> shopItems = new List<ShopItem>();
 

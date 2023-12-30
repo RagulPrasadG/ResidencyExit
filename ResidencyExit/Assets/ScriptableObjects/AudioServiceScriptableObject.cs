@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAudioService",menuName = "Data/NewAudioService")]
 public class AudioServiceScriptableObject : ScriptableObject
 {
-    [SerializeField] SoundDataSO soundData;
+    [SerializeField] SoundDataScriptableObject soundData;
     private WaitForSeconds waitTime;
 
     public void PlaySFX(AudioSource audioSource,AudioType audioType)
