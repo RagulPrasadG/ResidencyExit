@@ -11,7 +11,7 @@ Coins can be earned in the game while moving with vehicle and also by watching a
 
 <h2> Shop </h2>
 Earned coins can be used to purchase different types of vehicles from the shop section of the game,Premiuem vehicles like the Jipsy,Aventador and Aston Martin is always expensive to afford.
-<img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/32334e78-144a-4af9-ab50-874bd37e0f9c" alt="Shop" width="300">
+<img src="https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/32334e78-144a-4af9-ab50-874bd37e0f9c" alt="Shop" width="500">
 
 <h2> Controls </h2>
 ![SC1](https://github.com/RagulPrasadG/ResidencyExit/assets/61055516/a6a613ef-ffd9-496e-87af-d7a17b6f66eb)
