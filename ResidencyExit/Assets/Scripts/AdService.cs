@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 
-public class AdService : MonoBehaviour
+public class AdService
 {
-    [SerializeField] GameDataScriptableObject gameData;
+    private GameDataScriptableObject gameDataSO;
 
-    public static AdService instance { get; private set; }
 
 #if UNITY_EDITOR || Dev
     private string bannerAdId = "ca-app-pub-3940256099942544/6300978111";
@@ -25,26 +24,16 @@ public class AdService : MonoBehaviour
     private RewardedAd rewardedAd;
     private InterstitialAd interstitialAd;
 
-
-    private void Awake()
+    public AdService(GameDataScriptableObject gameDataSO)
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
-
-        DontDestroyOnLoad(this);
-
+        this.gameDataSO = gameDataSO;
         InitializeAdMob();
         LoadRewardedAd();
     }
 
     public void InitializeAdMob()
     {
-        // When true all events raised by GoogleMobileAds will be raised
-        // on the Unity main thread. The default value is false.
         MobileAds.RaiseAdEventsOnUnityMainThread = true;
-        // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => { Debug.Log("AdMob is initialized!"); });
 
     }
@@ -53,13 +42,11 @@ public class AdService : MonoBehaviour
     {
         Debug.Log("Creating banner view");
 
-        // If we already have a banner, destroy the old one.
         if (_bannerView != null)
         {
             DestroyBannerAd();
         }
 
-        // Create a 320x50 banner at top of the screen
         _bannerView = new BannerView(bannerAdId, AdSize.Banner, AdPosition.Bottom);
 
     }
@@ -76,25 +63,24 @@ public class AdService : MonoBehaviour
 
     public void LoadBannerAd()
     {
-        // create an instance of a banner view first.
+
         if (_bannerView == null)
         {
             CreateBannerAd();
         }
-        // create our request used to load the ad.
+
         var adRequest = new AdRequest();
 
-        // send the request to load the ad.
+
         Debug.Log("Loading banner ad.");
         _bannerView.LoadAd(adRequest);
 
-        // Raised when an ad is loaded into the banner view.
         _bannerView.OnBannerAdLoaded += () =>
         {
             Debug.Log("Banner view loaded an ad with response : "
                 + _bannerView.GetResponseInfo());
         };
-        // Raised when an ad fails to load into the banner view.
+
         _bannerView.OnBannerAdLoadFailed += (LoadAdError error) =>
         {
             Debug.LogError("Banner view failed to load an ad with error : "
@@ -104,7 +90,7 @@ public class AdService : MonoBehaviour
 
     public void LoadRewardedAd()
     {
-        // Clean up the old ad before loading a new one.
+
         if (rewardedAd != null)
         {
             rewardedAd.Destroy();
@@ -113,15 +99,11 @@ public class AdService : MonoBehaviour
 
         Debug.Log("Loading the rewarded ad.");
 
-        // create our request used to load the ad.
         var adRequest = new AdRequest();
 
-
-        // send the request to load the ad.
         RewardedAd.Load(rewardedAdId, adRequest,
             (RewardedAd ad, LoadAdError error) =>
             {
-              // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
                     Debug.LogError("Rewarded ad failed to load an ad " +
@@ -142,11 +124,9 @@ public class AdService : MonoBehaviour
         RegisterRewardedAdReloadHandler(rewardedAd);
         if (rewardedAd != null && rewardedAd.CanShowAd())
         {
-
             rewardedAd.Show((Reward reward) =>
             {
-                // TODO: Reward the user.
-                gameData.coinAmount += rewardAmount;
+                gameDataSO.coinAmount += rewardAmount;
                 GameService.Instance.mainMenuUIService.SetCoinText();
             });
         }
@@ -156,8 +136,7 @@ public class AdService : MonoBehaviour
 
     public void LoadInterstitialAd()
     {
-      
-        // Clean up the old ad before loading a new one.
+
         if (interstitialAd != null)
         {
             interstitialAd.Destroy();
@@ -166,14 +145,11 @@ public class AdService : MonoBehaviour
 
         Debug.Log("Loading the interstitial ad.");
 
-        // create our request used to load the ad.
         var adRequest = new AdRequest();
 
-        // send the request to load the ad.
         InterstitialAd.Load(interstitialAdId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
-                // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
                     Debug.LogError("interstitial ad failed to load an ad " +
@@ -206,42 +182,33 @@ public class AdService : MonoBehaviour
 
     private void RegisterRewardedAdReloadHandler(RewardedAd ad)
     {
-        // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Rewarded Ad full screen content closed.");
-
-            // Reload the ad so that we can show another as soon as possible.
             LoadRewardedAd();
         };
-        // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             Debug.LogError("Rewarded ad failed to open full screen content " +
                            "with error : " + error);
 
-            // Reload the ad so that we can show another as soon as possible.
             LoadRewardedAd();
         };
     }
 
     private void RegisterInterstitialReloadHandler(InterstitialAd ad)
     {
-        // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Interstitial Ad full screen content closed.");
 
-            // Reload the ad so that we can show another as soon as possible.
             LoadInterstitialAd();
         };
-        // Raised when the ad failed to open full screen content.
+
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             Debug.LogError("Interstitial ad failed to open full screen content " +
                            "with error : " + error);
-
-            // Reload the ad so that we can show another as soon as possible.
             LoadInterstitialAd();
         };
     }

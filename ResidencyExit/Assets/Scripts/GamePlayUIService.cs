@@ -51,7 +51,7 @@ public class GamePlayUIService : MonoBehaviour
 
     private void Awake()
     {
-        AdService.instance.LoadInterstitialAd();
+        GameService.Instance.adService.LoadInterstitialAd();
         SetEvents();
     }
 
@@ -76,7 +76,7 @@ public class GamePlayUIService : MonoBehaviour
 
         if (gameDataSO.currentLevel % 3 == 0 && Application.internetReachability != NetworkReachability.NotReachable)
         {
-            AdService.instance.ShowInterstitialAd();
+            GameService.Instance.adService.ShowInterstitialAd();
         }
 
         pauseButton.gameObject.SetActive(false);
@@ -206,7 +206,6 @@ public class GamePlayUIService : MonoBehaviour
         Time.timeScale = 1;
         DOTween.KillAll();
         Destroy(GameService.Instance.gameObject);
-        Destroy(AdService.instance.gameObject);
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -220,7 +219,7 @@ public class GamePlayUIService : MonoBehaviour
     {
         if (GameService.Instance.collectedCoins == 0) return;
 
-        AdService.instance.ShowRewardedAd(GameService.Instance.collectedCoins * 2);
+        GameService.Instance.adService.ShowRewardedAd(GameService.Instance.collectedCoins * 2);
     }
 
 }
