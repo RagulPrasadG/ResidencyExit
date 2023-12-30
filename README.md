@@ -46,13 +46,13 @@ The level is represented with CSV data which has letters denoting various compon
 <br>
 <br>
 
-* <h3> W </h3> Denotes a wall
-* <h3> E </h3> Denotes the empty space
-* <h3> G </h3> Denotes the the goal marker
-* <h3> C </h3> Denotes a the player's starting position
-* <h3> B </h3> Denotes a building
-* <h3> O </h3> Denotes a coin
-* <h3> X </h3> Denotes an empty space
+* <h3> 'w' </h3> Denotes a wall
+* <h3> 'e' </h3> Denotes the empty space
+* <h3> 'g' </h3> Denotes the the goal marker
+* <h3> 'c' </h3> Denotes a the player's starting position
+* <h3> 'b' </h3> Denotes a building
+* <h3> 'o' </h3> Denotes a coin
+* <h3> 'x' </h3> Denotes an empty space
 
 <h2> ScreenShots </h2>
 
